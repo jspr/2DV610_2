@@ -25,12 +25,12 @@ public class PlayGameTest {
 	}
 
 	@Test
-	//failing
+	//working
 	public void shouldDisplayWelcomeMessage() {
 		sut = new PlayGame();
 		IView view = mock(EnglishView.class);
 		SlotMachine slotMachine = new SlotMachine();
-		sut.Play(slotMachine, view);
+		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
 	}
 

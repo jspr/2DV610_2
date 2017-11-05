@@ -5,8 +5,8 @@ import view.IView;
 
 public class PlayGame {
 	
-	public void Play(SlotMachine slotMachine, IView view) {
-		
+	public void play(SlotMachine slotMachine, IView view) {
+		view.displayWelcomeMessage();
 	}
 
 }
