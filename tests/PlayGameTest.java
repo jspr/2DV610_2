@@ -25,6 +25,7 @@ public class PlayGameTest {
 	}
 
 	@Test
+	//failing
 	public void shouldDisplayWelcomeMessage() {
 		sut = new PlayGame();
 		IView view = mock(EnglishView.class);
