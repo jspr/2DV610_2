@@ -7,7 +7,7 @@ public class Program {
 
 	public static void main(String[] args) {
 		SlotMachine slotMachine = new SlotMachine();
-		IView view = new EnglishView();
+		IView view = new EnglishView(System.out);
 		PlayGame playGame = new PlayGame();
 	}
 
