@@ -46,7 +46,7 @@ public class IViewTest {
 	}
 
 	@Test
-	//fails
+	//working
 	public void shouldDisplayWelcomeMessage() {
 		sut.displayWelcomeMessage();
 		verify(printStream).println();
