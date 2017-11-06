@@ -48,11 +48,9 @@ public class IViewTest {
 
 	@Test
 	//working
-	//BUT - this is still faulty as it kind of defeats the purpose of using an interface for the view
-	//it will not work when another class implements the interface
 	public void shouldDisplayWelcomeMessage() {
 		sut.displayWelcomeMessage();
-		verify(printStream).println("Welcome to try your luck on the Slot Machine!");
+		verify(printStream).println(sut.getWelcomeMessage());
 	}
 
 }

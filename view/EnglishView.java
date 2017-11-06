@@ -6,6 +6,8 @@ public class EnglishView implements IView{
 
 	private PrintStream printStream;
 	
+	private final String WELCOME_MESSAGE = "Welcome to try your luck on the Slot Machine!";
+	
 	public EnglishView(PrintStream printStream) {
 		this.printStream = printStream;
 	}
@@ -13,7 +15,12 @@ public class EnglishView implements IView{
 	@Override
 	public void displayWelcomeMessage() {
 		// TODO Auto-generated method stub
-		printStream.println("Welcome to try your luck on the Slot Machine!");
+		printStream.println(WELCOME_MESSAGE);
+	}
+	
+	@Override
+	public String getWelcomeMessage() {
+		return WELCOME_MESSAGE;
 	}
 
 }
