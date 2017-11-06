@@ -14,7 +14,6 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayWelcomeMessage() {
-		// TODO Auto-generated method stub
 		printStream.println(WELCOME_MESSAGE);
 	}
 	
@@ -26,7 +25,7 @@ public class EnglishView implements IView{
 	@Override
 	public void displayInstructions() {
 		// TODO Auto-generated method stub
-		
+		printStream.println();
 	}
 
 }
