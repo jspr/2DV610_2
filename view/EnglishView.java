@@ -35,7 +35,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayQuitMessage() {
-		printStream.println();	
+		printStream.println("Thank you for playing! Bye for now.");	
 	}
 
 }
