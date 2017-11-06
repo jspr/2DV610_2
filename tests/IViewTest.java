@@ -52,5 +52,12 @@ public class IViewTest {
 		sut.displayWelcomeMessage();
 		verify(printStream).println(sut.getWelcomeMessage());
 	}
+	
+	@Test
+	//fail
+	public void shouldDisplayInstructions() {
+		sut.displayInstructions();
+		verify(printStream).println();
+	}
 
 }

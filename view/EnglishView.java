@@ -23,4 +23,10 @@ public class EnglishView implements IView{
 		return WELCOME_MESSAGE;
 	}
 
+	@Override
+	public void displayInstructions() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
