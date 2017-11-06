@@ -18,6 +18,7 @@ import view.IView;
 @RunWith(Parameterized.class)
 public class IViewTest {
 // testing interfaces and implementations:
+// https://stackoverflow.com/questions/6724401/how-to-write-junit-tests-for-interfaces
 // http://junit.sourceforge.net/javadoc/org/junit/runners/Parameterized.html
 	
 	private IView sut;
@@ -46,10 +47,10 @@ public class IViewTest {
 	}
 
 	@Test
-	//working
+	//fail
 	public void shouldDisplayWelcomeMessage() {
 		sut.displayWelcomeMessage();
-		verify(printStream).println();
+		verify(printStream).println("Welcome to try your luck on the Slot Machine!");
 	}
 
 }
