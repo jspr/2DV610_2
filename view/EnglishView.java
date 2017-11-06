@@ -33,4 +33,10 @@ public class EnglishView implements IView{
 		return INSTRUCTIONS;
 	}
 
+	@Override
+	public void displayQuitMessage() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

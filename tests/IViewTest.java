@@ -57,5 +57,11 @@ public class IViewTest {
 		sut.displayInstructions();
 		verify(printStream).println(sut.getInstructions());
 	}
+	
+	@Test
+	public void shouldDisplayQuitMessage() {
+		sut.displayQuitMessage();
+		verify(printStream).println();
+	}
 
 }

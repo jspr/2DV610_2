@@ -6,4 +6,5 @@ public interface IView
   String getWelcomeMessage();
   void displayInstructions();
   String getInstructions();
+  void displayQuitMessage();
 }
