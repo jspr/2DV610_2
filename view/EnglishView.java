@@ -24,8 +24,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayInstructions() {
-		// TODO Auto-generated method stub
-		printStream.println();
+		printStream.println("Enter 's' to spin or 'q' to quit.");
 	}
 
 }
