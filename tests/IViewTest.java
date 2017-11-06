@@ -61,7 +61,7 @@ public class IViewTest {
 	@Test
 	public void shouldDisplayQuitMessage() {
 		sut.displayQuitMessage();
-		verify(printStream).println();
+		verify(printStream).println("Thank you for playing! Bye for now.");
 	}
 
 }
