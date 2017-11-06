@@ -7,4 +7,5 @@ public interface IView
   void displayInstructions();
   String getInstructions();
   void displayQuitMessage();
+  String getQuitMessage();
 }
