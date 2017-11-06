@@ -13,7 +13,7 @@ public class EnglishView implements IView{
 	@Override
 	public void displayWelcomeMessage() {
 		// TODO Auto-generated method stub
-		printStream.println();
+		printStream.println("Welcome to try your luck on the Slot Machine!");
 	}
 
 }
