@@ -44,4 +44,10 @@ public class EnglishView implements IView{
 		return QUIT_MESSAGE;
 	}
 
+	@Override
+	public boolean wantsToQuit() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

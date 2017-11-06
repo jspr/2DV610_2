@@ -40,5 +40,23 @@ public class PlayGameTest {
 		sut.play(slotMachine, view);
 		verify(view).displayInstructions();
 	}
+	
+	@Test
+	public void shouldDisplayWelcomeMessageInstructionsAndQuit() {
+		sut.play(slotMachine, view);		
+		when(view.wantsToQuit()).thenReturn(true);
+		verify(view).displayWelcomeMessage();
+		verify(view).displayInstructions();
+		verify(view).displayQuitMessage();
+	}
+	
+	@Test
+	public void shouldDisplayWelcomeMessageAndInstructionsNotQuit() {
+		sut.play(slotMachine, view);		
+		when(view.wantsToQuit()).thenReturn(false);
+		verify(view).displayWelcomeMessage();
+		verify(view).displayInstructions();
+		verify(view, never()).displayQuitMessage();
+	}
 
 }

@@ -8,4 +8,5 @@ public interface IView
   String getInstructions();
   void displayQuitMessage();
   String getQuitMessage();
+boolean wantsToQuit();
 }
