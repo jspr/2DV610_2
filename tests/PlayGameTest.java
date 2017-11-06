@@ -25,13 +25,21 @@ public class PlayGameTest {
 	}
 
 	@Test
-	//working
 	public void shouldDisplayWelcomeMessage() {
 		sut = new PlayGame();
 		IView view = mock(EnglishView.class);
 		SlotMachine slotMachine = new SlotMachine();
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
+	}
+	
+	@Test
+	public void shouldDisplayInstructions() {
+		sut = new PlayGame();
+		IView view = mock(EnglishView.class);
+		SlotMachine slotMachine = new SlotMachine();
+		sut.play(slotMachine, view);
+		verify(view).displayInstructions();
 	}
 
 }
