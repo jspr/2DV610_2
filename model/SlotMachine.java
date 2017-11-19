@@ -3,9 +3,11 @@ package model;
 public class SlotMachine {
 	
 	private int minBet;
+	private int maxBet;
 	
-	public SlotMachine(int minBet) {
+	public SlotMachine(int minBet, int maxBet) {
 		this.minBet = minBet;
+		this.maxBet = maxBet;
 	}
 
 	public int getMinBet() {
@@ -13,7 +15,7 @@ public class SlotMachine {
 	}
 
 	public int getMaxBet() {
-		return 3;
+		return maxBet;
 	}
 
 }

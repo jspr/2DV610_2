@@ -9,9 +9,12 @@ import org.junit.Test;
 import model.SlotMachine;
 
 public class SlotMachineTest {
+	
+	private SlotMachine sut;
 
 	@Before
 	public void setUp() throws Exception {
+		 sut = new SlotMachine(1,3);
 	}
 
 	@After
@@ -20,7 +23,6 @@ public class SlotMachineTest {
 
 	@Test
 	public void shouldReturnMinBet1() {
-		SlotMachine sut = new SlotMachine(1);
 		int expected = 1;
 		int actual = sut.getMinBet();
 		assertEquals(expected,actual);
@@ -28,7 +30,6 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturnMaxBet3() {
-		SlotMachine sut = new SlotMachine(1);
 		int expected = 3;
 		int actual = sut.getMaxBet();
 		assertEquals(expected,actual);
