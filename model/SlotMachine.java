@@ -13,8 +13,7 @@ public class SlotMachine {
 	}
 
 	public int getMaxBet() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 3;
 	}
 
 }
