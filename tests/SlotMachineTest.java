@@ -34,5 +34,12 @@ public class SlotMachineTest {
 		int actual = sut.getMaxBet();
 		assertEquals(expected,actual);
 	}
+	
+	@Test
+	public void shouldReturnCredit10() {
+		int expected = 10;
+		int actual = sut.getCredit();
+		assertEquals(expected,actual);
+	}
 
 }

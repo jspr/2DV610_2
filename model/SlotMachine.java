@@ -18,4 +18,9 @@ public class SlotMachine {
 		return maxBet;
 	}
 
+	public int getCredit() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
