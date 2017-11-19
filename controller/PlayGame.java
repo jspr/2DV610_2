@@ -10,6 +10,8 @@ public class PlayGame {
 		view.displayInstructions();
 		if(view.wantsToQuit()) {
 			view.displayQuitMessage();
+		} else {
+			view.displayBettingMessage();
 		}
 	}
 
