@@ -25,5 +25,13 @@ public class SlotMachineTest {
 		int actual = sut.getMinBet();
 		assertEquals(expected,actual);
 	}
+	
+	@Test
+	public void shouldReturnMaxBet3() {
+		SlotMachine sut = new SlotMachine(1);
+		int expected = 3;
+		int actual = sut.getMaxBet();
+		assertEquals(expected,actual);
+	}
 
 }
