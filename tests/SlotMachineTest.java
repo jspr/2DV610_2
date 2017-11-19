@@ -20,7 +20,7 @@ public class SlotMachineTest {
 
 	@Test
 	public void shouldReturnMinBet1() {
-		SlotMachine sut = new SlotMachine();
+		SlotMachine sut = new SlotMachine(1);
 		int expected = 1;
 		int actual = sut.getMinBet();
 		assertEquals(expected,actual);
