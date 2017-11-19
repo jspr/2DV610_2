@@ -43,8 +43,8 @@ public class PlayGameTest {
 	
 	@Test
 	public void shouldDisplayWelcomeMessageInstructionsAndQuit() {
-		sut.play(slotMachine, view);		
 		when(view.wantsToQuit()).thenReturn(true);
+		sut.play(slotMachine, view);		
 		verify(view).displayWelcomeMessage();
 		verify(view).displayInstructions();
 		verify(view).displayQuitMessage();
@@ -52,8 +52,8 @@ public class PlayGameTest {
 	
 	@Test
 	public void shouldDisplayWelcomeMessageAndInstructionsNotQuit() {
-		sut.play(slotMachine, view);		
 		when(view.wantsToQuit()).thenReturn(false);
+		sut.play(slotMachine, view);		
 		verify(view).displayWelcomeMessage();
 		verify(view).displayInstructions();
 		verify(view, never()).displayQuitMessage();
