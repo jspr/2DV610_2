@@ -50,4 +50,10 @@ public class EnglishView implements IView{
 		return false;
 	}
 
+	@Override
+	public void displayBettingMessage() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

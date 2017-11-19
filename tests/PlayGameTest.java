@@ -42,6 +42,12 @@ public class PlayGameTest {
 	}
 	
 	@Test
+	public void shouldDisplayBettingMessage() {
+		sut.play(slotMachine, view);
+		verify(view).displayBettingMessage();
+	}
+	
+	@Test
 	public void shouldDisplayWelcomeMessageInstructionsAndQuit() {
 		when(view.wantsToQuit()).thenReturn(true);
 		sut.play(slotMachine, view);		
