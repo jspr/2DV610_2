@@ -17,7 +17,7 @@ public class SlotMachine {
 	}
 
 	public int getMaxBet() {
-		return maxBet;
+		return maxBet < credit ? maxBet : credit;
 	}
 
 	public int getCredit() {
