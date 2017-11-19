@@ -19,8 +19,7 @@ public class SlotMachine {
 	}
 
 	public int getCredit() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 10;
 	}
 
 }
