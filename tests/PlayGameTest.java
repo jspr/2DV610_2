@@ -22,7 +22,7 @@ public class PlayGameTest {
 	public void setUp() throws Exception {
 		sut = new PlayGame();
 		view = mock(EnglishView.class);
-		slotMachine = new SlotMachine(1,3);
+		slotMachine = new SlotMachine(1,3,10);
 	}
 
 	@After

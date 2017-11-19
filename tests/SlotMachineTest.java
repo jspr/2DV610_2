@@ -14,7 +14,7 @@ public class SlotMachineTest {
 
 	@Before
 	public void setUp() throws Exception {
-		 sut = new SlotMachine(1,3);
+		 sut = new SlotMachine(1,3,10);
 	}
 
 	@After
