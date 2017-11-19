@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>IViewTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Merged (2017-nov-19 14:32:17)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">tests</a> &gt; <span class="el_source">IViewTest.java</span></div><h1>IViewTest.java</h1><pre class="source lang-java linenums">package tests;
+
+import static org.mockito.Mockito.*;
+import org.junit.runners.Parameterized;
+
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import view.EnglishView;
+import view.IView;
+
+@RunWith(Parameterized.class)
+public class IViewTest {
+// testing interfaces and implementations:
+// https://stackoverflow.com/questions/6724401/how-to-write-junit-tests-for-interfaces
+// http://junit.sourceforge.net/javadoc/org/junit/runners/Parameterized.html
+	
+	private IView sut;
+<span class="fc" id="L25">	private static PrintStream printStream = mock(PrintStream.class);</span>
+	
+<span class="fc" id="L27">	public IViewTest(IView iView) {</span>
+<span class="fc" id="L28">        this.sut = iView;</span>
+<span class="fc" id="L29">    }</span>
+	
+    @Parameterized.Parameters
+    public static Collection&lt;Object[]&gt; data() {
+    	
+<span class="fc" id="L34">    	Object col[][] = new Object[][] {</span>
+<span class="fc" id="L35">    		new Object[]{new EnglishView(printStream)}</span>
+    	};
+    	
+<span class="fc" id="L38">    	return Arrays.asList(col);</span>
+    }
+
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L43">	}</span>
+
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L47">	}</span>
+
+	@Test
+	public void shouldDisplayWelcomeMessage() {
+<span class="fc" id="L51">		sut.displayWelcomeMessage();</span>
+<span class="fc" id="L52">		verify(printStream).println(sut.getWelcomeMessage());</span>
+<span class="fc" id="L53">	}</span>
+	
+	@Test
+	public void shouldDisplayInstructions() {
+<span class="fc" id="L57">		sut.displayInstructions();</span>
+<span class="fc" id="L58">		verify(printStream).println(sut.getInstructions());</span>
+<span class="fc" id="L59">	}</span>
+	
+	@Test
+	public void shouldDisplayQuitMessage() {
+<span class="fc" id="L63">		sut.displayQuitMessage();</span>
+<span class="fc" id="L64">		verify(printStream).println(sut.getQuitMessage());</span>
+<span class="fc" id="L65">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>Merged (2017-nov-19 14:32:17)</div></body></html>

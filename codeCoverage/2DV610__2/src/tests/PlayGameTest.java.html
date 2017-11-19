@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>PlayGameTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Merged (2017-nov-19 14:32:17)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">tests</a> &gt; <span class="el_source">PlayGameTest.java</span></div><h1>PlayGameTest.java</h1><pre class="source lang-java linenums">package tests;
+
+import static org.mockito.Mockito.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import controller.PlayGame;
+import model.SlotMachine;
+import view.EnglishView;
+import view.IView;
+
+
+<span class="fc" id="L15">public class PlayGameTest {</span>
+	
+	private PlayGame sut;
+	IView view;
+	SlotMachine slotMachine;
+
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L23">		sut = new PlayGame();</span>
+<span class="fc" id="L24">		view = mock(EnglishView.class);</span>
+<span class="fc" id="L25">		slotMachine = new SlotMachine();</span>
+<span class="fc" id="L26">	}</span>
+
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L30">	}</span>
+
+	@Test
+	public void shouldDisplayWelcomeMessage() {
+<span class="fc" id="L34">		sut.play(slotMachine, view);</span>
+<span class="fc" id="L35">		verify(view).displayWelcomeMessage();</span>
+<span class="fc" id="L36">	}</span>
+	
+	@Test
+	public void shouldDisplayInstructions() {
+<span class="fc" id="L40">		sut.play(slotMachine, view);</span>
+<span class="fc" id="L41">		verify(view).displayInstructions();</span>
+<span class="fc" id="L42">	}</span>
+	
+	@Test
+	public void shouldDisplayWelcomeMessageInstructionsAndQuit() {
+<span class="fc" id="L46">		when(view.wantsToQuit()).thenReturn(true);</span>
+<span class="fc" id="L47">		sut.play(slotMachine, view);		</span>
+<span class="fc" id="L48">		verify(view).displayWelcomeMessage();</span>
+<span class="fc" id="L49">		verify(view).displayInstructions();</span>
+<span class="fc" id="L50">		verify(view).displayQuitMessage();</span>
+<span class="fc" id="L51">	}</span>
+	
+	@Test
+	public void shouldDisplayWelcomeMessageAndInstructionsNotQuit() {
+<span class="fc" id="L55">		when(view.wantsToQuit()).thenReturn(false);</span>
+<span class="fc" id="L56">		sut.play(slotMachine, view);		</span>
+<span class="fc" id="L57">		verify(view).displayWelcomeMessage();</span>
+<span class="fc" id="L58">		verify(view).displayInstructions();</span>
+<span class="fc" id="L59">		verify(view, never()).displayQuitMessage();</span>
+<span class="fc" id="L60">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>Merged (2017-nov-19 14:32:17)</div></body></html>
