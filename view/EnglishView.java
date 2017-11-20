@@ -78,11 +78,19 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayCredit(int credit) {
-	    printStream.println("##############" + 
+	    printStream.println(repeatString("#", 13 + Integer.toString(credit).length()) + 
 							System.lineSeparator() +
 							"# CREDITS: " + credit + " #" +
 							System.lineSeparator() +
-							"##############");
+							repeatString("#", 13 + Integer.toString(credit).length()));
+	}
+	
+	private String repeatString(String string, int times) {
+		StringBuilder sb = new StringBuilder("");
+		for(int i=0; i<times; i++) {
+			sb.append(string);
+		}
+		return sb.toString();
 	}
 
 }
