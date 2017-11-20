@@ -2,6 +2,8 @@ package tests;
 
 import static org.mockito.Mockito.*;
 
+import java.io.IOException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,25 +31,27 @@ public class PlayGameTest {
 	}
 
 	@Test
-	public void shouldDisplayWelcomeMessage() {
+	public void shouldDisplayWelcomeMessage() throws IOException {
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
 	}
 	
 	@Test
-	public void shouldDisplayInstructions() {
+	public void shouldDisplayInstructions() throws IOException {
 		sut.play(slotMachine, view);
 		verify(view).displayInstructions();
 	}
 	
 	@Test
-	public void shouldDisplayBettingMessage() {
+	public void shouldDisplayBettingMessage() throws IOException {
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
 		sut.play(slotMachine, view);
 		verify(view).displayBettingMessage(1,3);
 	}
 	
 	@Test
-	public void shouldDisplayWelcomeMessageInstructionsNotBettingMessageAndQuit() {
+	public void shouldDisplayWelcomeMessageInstructionsNotBettingMessageAndQuit() throws IOException {
 		when(view.wantsToQuit()).thenReturn(true);
 		sut.play(slotMachine, view);		
 		verify(view).displayWelcomeMessage();
@@ -57,8 +61,10 @@ public class PlayGameTest {
 	}
 	
 	@Test
-	public void shouldDisplayWelcomeMessageInstructionsAndBettingMessageNotQuit() {
+	public void shouldDisplayWelcomeMessageInstructionsAndBettingMessageNotQuit() throws IOException {
 		when(view.wantsToQuit()).thenReturn(false);
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
 		sut.play(slotMachine, view);		
 		verify(view).displayWelcomeMessage();
 		verify(view).displayInstructions();

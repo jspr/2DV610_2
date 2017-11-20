@@ -1,5 +1,7 @@
 package view;
 
+import java.io.IOException;
+
 public interface IView
 {
   void displayWelcomeMessage();
@@ -10,5 +12,5 @@ public interface IView
   String getQuitMessage();
   void displayBettingMessage(int min, int max);
   String getBettingMessage();
-  boolean wantsToQuit();
+  boolean wantsToQuit() throws IOException;
 }

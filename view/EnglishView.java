@@ -1,18 +1,22 @@
 package view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
 
 public class EnglishView implements IView{
 
 	private PrintStream printStream;
+	private BufferedReader bufferedReader;
 	
 	private final String WELCOME_MESSAGE = "Welcome to try your luck on the Slot Machine!";
 	private final String INSTRUCTIONS = "Enter 's' to spin or 'q' to quit.";
 	private final String QUIT_MESSAGE = "Thank you for playing! Bye for now.";
 	private final String BETTING_MESSAGE = "Enter amount to bet (min: %s, max: %s): ";
 	
-	public EnglishView(PrintStream printStream) {
+	public EnglishView(PrintStream printStream, BufferedReader bufferedReader) {
 		this.printStream = printStream;
+		this.bufferedReader = bufferedReader;
 	}
 
 	@Override
@@ -46,9 +50,8 @@ public class EnglishView implements IView{
 	}
 
 	@Override
-	public boolean wantsToQuit() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean wantsToQuit() throws IOException {
+		return bufferedReader.readLine().equals("Q");
 	}
 
 	@Override

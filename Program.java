@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import controller.PlayGame;
 import model.SlotMachine;
 import view.EnglishView;
@@ -7,9 +11,14 @@ public class Program {
 
 	public static void main(String[] args) {
 		SlotMachine slotMachine = new SlotMachine(1,3,10);
-		IView view = new EnglishView(System.out);
+		IView view = new EnglishView(System.out, new BufferedReader(new InputStreamReader(System.in)));
 		PlayGame playGame = new PlayGame();
-		playGame.play(slotMachine, view);
+		try {
+			playGame.play(slotMachine, view);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 import org.junit.runners.Parameterized;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,6 +27,7 @@ public class IViewTest {
 	
 	private IView sut;
 	private static PrintStream printStream = mock(PrintStream.class);
+	private static BufferedReader bufferedReader = mock(BufferedReader.class);
 	
 	public IViewTest(IView iView) {
         this.sut = iView;
@@ -34,7 +37,7 @@ public class IViewTest {
     public static Collection<Object[]> data() {
     	
     	Object col[][] = new Object[][] {
-    		new Object[]{new EnglishView(printStream)}
+    		new Object[]{new EnglishView(printStream, bufferedReader)}
     	};
     	
     	return Arrays.asList(col);
@@ -73,12 +76,14 @@ public class IViewTest {
 	}
 	
 	@Test
-	public void shouldReturnFalseWantsToQuitOnInputS() {
+	public void shouldReturnFalseWantsToQuitOnInputS() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("S");
 		assertFalse(sut.wantsToQuit());
 	}
 	
 	@Test
-	public void shouldReturnTrueWantsToQuitOnInputQ() {
+	public void shouldReturnTrueWantsToQuitOnInputQ() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("Q");
 		assertTrue(sut.wantsToQuit());
 	}
 
