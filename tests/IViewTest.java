@@ -88,13 +88,20 @@ public class IViewTest {
 	}
 	
 	@Test
-	public void shouldDisplayCredit1() {
+	public void shouldDisplayCredit() {
 		sut.displayCredit(1);
 		verify(printStream).println("##############" + 
 									System.lineSeparator() +
 									"# CREDITS: 1 #" +
 									System.lineSeparator() +
 									"##############");
+		sut.displayCredit(10);
+		verify(printStream).println("###############" + 
+									System.lineSeparator() +
+									"# CREDITS: 10 #" +
+									System.lineSeparator() +
+									"###############");
 	}
+
 
 }

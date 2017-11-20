@@ -80,7 +80,7 @@ public class EnglishView implements IView{
 	public void displayCredit(int credit) {
 	    printStream.println("##############" + 
 							System.lineSeparator() +
-							"# CREDITS: 1 #" +
+							"# CREDITS: " + credit + " #" +
 							System.lineSeparator() +
 							"##############");
 	}
