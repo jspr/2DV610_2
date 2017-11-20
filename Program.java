@@ -16,7 +16,7 @@ public class Program {
 		try {
 			playGame.play(slotMachine, view);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("An IOException has been thrown:");
 			e.printStackTrace();
 		}
 	}

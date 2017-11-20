@@ -60,7 +60,7 @@ public class IViewTest {
 	@Test
 	public void shouldDisplayInstructions() {
 		sut.displayInstructions();
-		verify(printStream).println(sut.getInstructions());
+		verify(printStream).print(sut.getInstructions());
 	}
 	
 	@Test

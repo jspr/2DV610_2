@@ -10,7 +10,7 @@ public class EnglishView implements IView{
 	private BufferedReader bufferedReader;
 	
 	private final String WELCOME_MESSAGE = "Welcome to try your luck on the Slot Machine!";
-	private final String INSTRUCTIONS = "Enter 's' to spin or 'q' to quit.";
+	private final String INSTRUCTIONS = "Enter 's' to spin or 'q' to quit: ";
 	private final String QUIT_MESSAGE = "Thank you for playing! Bye for now.";
 	private final String BETTING_MESSAGE = "Enter amount to bet (min: %s, max: %s): ";
 	
@@ -31,7 +31,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayInstructions() {
-		printStream.println(INSTRUCTIONS);
+		printStream.print(INSTRUCTIONS);
 	}
 	
 	@Override
@@ -51,7 +51,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public boolean wantsToQuit() throws IOException {
-		return bufferedReader.readLine().equals("Q");
+		return bufferedReader.readLine().trim().toUpperCase().equals("Q");
 	}
 
 	@Override
