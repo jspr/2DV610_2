@@ -1,7 +1,5 @@
 package view;
 
-import static org.mockito.Mockito.verify;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -79,8 +77,12 @@ public class EnglishView implements IView{
 	}
 
 	@Override
-	public void displayCredit(int i) {
-		// TODO Auto-generated method stub
+	public void displayCredit(int credit) {
+	    printStream.println("##############" + 
+							System.lineSeparator() +
+							"# CREDITS: 1 #" +
+							System.lineSeparator() +
+							"##############");
 	}
 
 }

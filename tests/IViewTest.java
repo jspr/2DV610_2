@@ -90,9 +90,11 @@ public class IViewTest {
 	@Test
 	public void shouldDisplayCredit1() {
 		sut.displayCredit(1);
-		verify(printStream).println("##############");
-		verify(printStream).println("# CREDITS: 1 #");
-		verify(printStream).println("##############");
+		verify(printStream).println("##############" + 
+									System.lineSeparator() +
+									"# CREDITS: 1 #" +
+									System.lineSeparator() +
+									"##############");
 	}
 
 }
