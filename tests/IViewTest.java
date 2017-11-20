@@ -63,5 +63,11 @@ public class IViewTest {
 		sut.displayQuitMessage();
 		verify(printStream).println(sut.getQuitMessage());
 	}
+	
+	@Test
+	public void shouldDisplayBettingMessageMin1Max3() {
+		sut.displayBettingMessage();
+		verify(printStream).print("Enter amount to bet (min: 1, max: 3): ");
+	}
 
 }
