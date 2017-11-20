@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import controller.PlayGame;
 import model.SlotMachine;
-import view.EnglishView;
 import view.IView;
 
 
@@ -21,7 +20,7 @@ public class PlayGameTest {
 	@Before
 	public void setUp() throws Exception {
 		sut = new PlayGame();
-		view = mock(EnglishView.class);
+		view = mock(IView.class);
 		slotMachine = mock(SlotMachine.class);
 	}
 

@@ -8,6 +8,7 @@ public interface IView
   String getInstructions();
   void displayQuitMessage();
   String getQuitMessage();
-  boolean wantsToQuit();
   void displayBettingMessage(int min, int max);
+  String getBettingMessage();
+  boolean wantsToQuit();
 }

@@ -9,6 +9,7 @@ public class Program {
 		SlotMachine slotMachine = new SlotMachine(1,3,10);
 		IView view = new EnglishView(System.out);
 		PlayGame playGame = new PlayGame();
+		playGame.play(slotMachine, view);
 	}
 
 }

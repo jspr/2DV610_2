@@ -9,6 +9,7 @@ public class EnglishView implements IView{
 	private final String WELCOME_MESSAGE = "Welcome to try your luck on the Slot Machine!";
 	private final String INSTRUCTIONS = "Enter 's' to spin or 'q' to quit.";
 	private final String QUIT_MESSAGE = "Thank you for playing! Bye for now.";
+	private final String BETTING_MESSAGE = "Enter amount to bet (min: %s, max: %s): ";
 	
 	public EnglishView(PrintStream printStream) {
 		this.printStream = printStream;
@@ -52,7 +53,12 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayBettingMessage(int min, int max) {
-		printStream.print("Enter amount to bet (min: 1, max: 3): ");	
+		printStream.printf(BETTING_MESSAGE, min, max);	
+	}
+
+	@Override
+	public String getBettingMessage() {
+		return BETTING_MESSAGE;
 	}
 
 }
