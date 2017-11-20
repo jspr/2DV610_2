@@ -86,5 +86,13 @@ public class IViewTest {
 		when(bufferedReader.readLine()).thenReturn(sut.getQuitCommand());
 		assertTrue(sut.wantsToQuit());
 	}
+	
+	@Test
+	public void shouldDisplayCredit1() {
+		sut.displayCredit(1);
+		verify(printStream).println("##############");
+		verify(printStream).println("# CREDITS: 1 #");
+		verify(printStream).println("##############");
+	}
 
 }

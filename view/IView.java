@@ -15,4 +15,5 @@ public interface IView
   boolean wantsToQuit() throws IOException;
   String getSpinCommand();
   String getQuitCommand();
+void displayCredit(int i);
 }
