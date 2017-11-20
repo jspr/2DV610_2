@@ -23,7 +23,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayWelcomeMessage() {
-		printStream.printf(WELCOME_MESSAGE, SPIN_COMMAND, QUIT_COMMAND);
+		printStream.println(WELCOME_MESSAGE);
 	}
 	
 	@Override
@@ -33,7 +33,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayInstructions() {
-		printStream.print(INSTRUCTIONS);
+		printStream.printf(INSTRUCTIONS,SPIN_COMMAND,QUIT_COMMAND);
 	}
 	
 	@Override

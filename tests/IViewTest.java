@@ -54,13 +54,13 @@ public class IViewTest {
 	@Test
 	public void shouldDisplayWelcomeMessage() {
 		sut.displayWelcomeMessage();
-		verify(printStream).printf(sut.getWelcomeMessage(),sut.getSpinCommand(),sut.getQuitCommand());
+		verify(printStream).println(sut.getWelcomeMessage());
 	}
 	
 	@Test
 	public void shouldDisplayInstructions() {
 		sut.displayInstructions();
-		verify(printStream).print(sut.getInstructions());
+		verify(printStream).printf(sut.getInstructions(),sut.getSpinCommand(),sut.getQuitCommand());
 	}
 	
 	@Test
