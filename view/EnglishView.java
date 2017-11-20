@@ -51,9 +51,8 @@ public class EnglishView implements IView{
 	}
 
 	@Override
-	public void displayBettingMessage() {
-		// TODO Auto-generated method stub
-		
+	public void displayBettingMessage(int min, int max) {
+		printStream.print("Enter amount to bet (min: 1, max: 3): ");	
 	}
 
 }

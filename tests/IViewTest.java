@@ -66,7 +66,7 @@ public class IViewTest {
 	
 	@Test
 	public void shouldDisplayBettingMessageMin1Max3() {
-		sut.displayBettingMessage();
+		sut.displayBettingMessage(1, 3);
 		verify(printStream).print("Enter amount to bet (min: 1, max: 3): ");
 	}
 

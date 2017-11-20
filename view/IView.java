@@ -9,5 +9,5 @@ public interface IView
   void displayQuitMessage();
   String getQuitMessage();
   boolean wantsToQuit();
-  void displayBettingMessage();
+  void displayBettingMessage(int min, int max);
 }

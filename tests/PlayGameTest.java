@@ -22,7 +22,7 @@ public class PlayGameTest {
 	public void setUp() throws Exception {
 		sut = new PlayGame();
 		view = mock(EnglishView.class);
-		slotMachine = new SlotMachine(1,3,10);
+		slotMachine = mock(SlotMachine.class);
 	}
 
 	@After
@@ -44,7 +44,7 @@ public class PlayGameTest {
 	@Test
 	public void shouldDisplayBettingMessage() {
 		sut.play(slotMachine, view);
-		verify(view).displayBettingMessage();
+		verify(view).displayBettingMessage(1,3);
 	}
 	
 	@Test
@@ -54,7 +54,7 @@ public class PlayGameTest {
 		verify(view).displayWelcomeMessage();
 		verify(view).displayInstructions();
 		verify(view).displayQuitMessage();
-		verify(view, never()).displayBettingMessage();
+		verify(view, never()).displayBettingMessage(1,3);
 	}
 	
 	@Test
@@ -63,7 +63,7 @@ public class PlayGameTest {
 		sut.play(slotMachine, view);		
 		verify(view).displayWelcomeMessage();
 		verify(view).displayInstructions();
-		verify(view).displayBettingMessage();
+		verify(view).displayBettingMessage(1,3);
 		verify(view, never()).displayQuitMessage();
 	}
 

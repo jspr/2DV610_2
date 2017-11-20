@@ -11,7 +11,7 @@ public class PlayGame {
 		if(view.wantsToQuit()) {
 			view.displayQuitMessage();
 		} else {
-			view.displayBettingMessage();
+			view.displayBettingMessage(slotMachine.getMinBet(), slotMachine.getMaxBet());
 		}
 	}
 
