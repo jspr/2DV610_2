@@ -1,5 +1,7 @@
 package tests;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 import org.junit.runners.Parameterized;
 
@@ -68,6 +70,16 @@ public class IViewTest {
 	public void shouldDisplayBettingMessageMin1Max3() {
 		sut.displayBettingMessage(1, 3);
 		verify(printStream).printf(sut.getBettingMessage(),1,3);
+	}
+	
+	@Test
+	public void shouldReturnFalseWantsToQuitOnInputS() {
+		assertFalse(sut.wantsToQuit());
+	}
+	
+	@Test
+	public void shouldReturnTrueWantsToQuitOnInputQ() {
+		assertTrue(sut.wantsToQuit());
 	}
 
 }
