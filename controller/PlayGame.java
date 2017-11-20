@@ -9,6 +9,7 @@ public class PlayGame {
 	
 	public void play(SlotMachine slotMachine, IView view) throws IOException {
 		view.displayWelcomeMessage();
+		view.displayCredit(10);
 		view.displayInstructions();
 		if(view.wantsToQuit()) {
 			view.displayQuitMessage();
