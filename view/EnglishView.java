@@ -64,4 +64,16 @@ public class EnglishView implements IView{
 		return BETTING_MESSAGE;
 	}
 
+	@Override
+	public String getSpinCommand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getQuitCommand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

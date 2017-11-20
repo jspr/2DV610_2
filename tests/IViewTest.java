@@ -76,14 +76,14 @@ public class IViewTest {
 	}
 	
 	@Test
-	public void shouldReturnFalseWantsToQuitOnInputS() throws IOException {
-		when(bufferedReader.readLine()).thenReturn("S");
+	public void shouldReturnFalseWantsToQuitOnInputSpinCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn(sut.getSpinCommand());
 		assertFalse(sut.wantsToQuit());
 	}
 	
 	@Test
-	public void shouldReturnTrueWantsToQuitOnInputQ() throws IOException {
-		when(bufferedReader.readLine()).thenReturn("Q");
+	public void shouldReturnTrueWantsToQuitOnInputQuitCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn(sut.getQuitCommand());
 		assertTrue(sut.wantsToQuit());
 	}
 

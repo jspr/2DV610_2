@@ -13,4 +13,6 @@ public interface IView
   void displayBettingMessage(int min, int max);
   String getBettingMessage();
   boolean wantsToQuit() throws IOException;
+  String getSpinCommand();
+  String getQuitCommand();
 }
