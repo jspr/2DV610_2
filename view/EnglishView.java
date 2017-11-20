@@ -66,14 +66,12 @@ public class EnglishView implements IView{
 
 	@Override
 	public String getSpinCommand() {
-		// TODO Auto-generated method stub
-		return null;
+		return "S";
 	}
 
 	@Override
 	public String getQuitCommand() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Q";
 	}
 
 }
