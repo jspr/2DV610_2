@@ -54,7 +54,7 @@ public class IViewTest {
 	@Test
 	public void shouldDisplayWelcomeMessage() {
 		sut.displayWelcomeMessage();
-		verify(printStream).println(sut.getWelcomeMessage());
+		verify(printStream).printf(sut.getWelcomeMessage(),sut.getSpinCommand(),sut.getQuitCommand());
 	}
 	
 	@Test

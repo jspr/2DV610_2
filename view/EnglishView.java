@@ -10,9 +10,11 @@ public class EnglishView implements IView{
 	private BufferedReader bufferedReader;
 	
 	private final String WELCOME_MESSAGE = "Welcome to try your luck on the Slot Machine!";
-	private final String INSTRUCTIONS = "Enter 's' to spin or 'q' to quit: ";
+	private final String INSTRUCTIONS = "Enter '%s' to spin or '%s' to quit: ";
 	private final String QUIT_MESSAGE = "Thank you for playing! Bye for now.";
 	private final String BETTING_MESSAGE = "Enter amount to bet (min: %s, max: %s): ";
+	private final String SPIN_COMMAND = "s";
+	private final String QUIT_COMMAND = "q";
 	
 	public EnglishView(PrintStream printStream, BufferedReader bufferedReader) {
 		this.printStream = printStream;
@@ -21,7 +23,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayWelcomeMessage() {
-		printStream.println(WELCOME_MESSAGE);
+		printStream.printf(WELCOME_MESSAGE, SPIN_COMMAND, QUIT_COMMAND);
 	}
 	
 	@Override
@@ -66,12 +68,12 @@ public class EnglishView implements IView{
 
 	@Override
 	public String getSpinCommand() {
-		return "S";
+		return SPIN_COMMAND;
 	}
 
 	@Override
 	public String getQuitCommand() {
-		return "Q";
+		return QUIT_COMMAND;
 	}
 
 }
