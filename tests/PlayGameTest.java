@@ -44,6 +44,7 @@ public class PlayGameTest {
 	
 	@Test
 	public void shouldDisplayCredit() throws IOException {
+		when(slotMachine.getCredit()).thenReturn(10);
 		sut.play(slotMachine, view);
 		verify(view).displayCredit(10);
 	}

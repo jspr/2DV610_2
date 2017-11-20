@@ -85,10 +85,11 @@ public class EnglishView implements IView{
 
 	@Override
 	public String getCreditMessage(int credit) {
-		String border = repeatString("#", 3 + CREDIT.length() + Integer.toString(credit).length());
+		String border = repeatString("#", 5 + CREDIT.length() + Integer.toString(credit).length());
 		String creditMessage = border + 
 								System.lineSeparator() +
-								"# " + CREDIT + " " + credit + " " +
+								"# " + CREDIT + " " + credit + " #" +
+								System.lineSeparator() +
 								border;
 		return creditMessage;
 	}
