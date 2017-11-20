@@ -43,6 +43,12 @@ public class PlayGameTest {
 	}
 	
 	@Test
+	public void shouldDisplayCredit() throws IOException {
+		sut.play(slotMachine, view);
+		verify(view).displayCredit(10);
+	}
+	
+	@Test
 	public void shouldDisplayBettingMessage() throws IOException {
 		when(slotMachine.getMinBet()).thenReturn(1);
 		when(slotMachine.getMaxBet()).thenReturn(3);
