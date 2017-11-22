@@ -4,7 +4,7 @@ public class Reel {
 
 	public String getSymbol() {
 		// TODO Auto-generated method stub
-		return null;
+		return "000";
 	}
 
 }

@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import model.Reel;
-import model.SlotMachine;
-import model.Symbols;
 
 public class ReelTest {
 
