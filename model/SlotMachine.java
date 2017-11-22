@@ -8,13 +8,13 @@ public class SlotMachine {
 	private int minBet;
 	private int maxBet;
 	private int credit;
-	private int noOfReels;
+	private Collection<Reel> reels;
 	
-	public SlotMachine(int minBet, int maxBet, int credit, int noOfReels) {
+	public SlotMachine(int minBet, int maxBet, int credit, Collection<Reel> reels) {
 		this.minBet = minBet;
 		this.maxBet = maxBet;
 		this.credit = credit;
-		this.noOfReels = noOfReels;
+		this.reels = reels;
 	}
 
 	public int getMinBet() {
@@ -30,9 +30,9 @@ public class SlotMachine {
 	}
 
 	public Collection<String> getSymbols() {
-		ArrayList<String> symbols = new ArrayList<String>();
-		for(int i=0; i<noOfReels; i++) {
-			symbols.add("");
+		ArrayList<String> symbols = new ArrayList<String>();	
+		for(Reel reel : reels) {
+			symbols.add(reel.getSymbol());
 		}
 		return symbols;
 	}

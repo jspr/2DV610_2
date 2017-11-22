@@ -2,23 +2,30 @@ package tests;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.Reel;
 import model.SlotMachine;
-import model.Symbols;
 
 public class SlotMachineTest {
 	
 	private SlotMachine sut;
+	private Collection<Reel> reelMocks;
 
 	@Before
 	public void setUp() throws Exception {
-		 sut = new SlotMachine(1,3,10,3);
+		reelMocks = new ArrayList<Reel>();
+		for(int i=0; i<3; i++) {
+			reelMocks.add(mock(Reel.class));
+		}
+		sut = new SlotMachine(1,3,10,reelMocks);
 	}
 
 	@After
@@ -41,7 +48,7 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturnMaxBet1WhenCreditIs1() {
-		SlotMachine sut = new SlotMachine(1,3,1,3);
+		SlotMachine sut = new SlotMachine(1,3,1,reelMocks);
 		int expected = 1;
 		int actual = sut.getMaxBet();
 		assertEquals(expected,actual);
@@ -56,16 +63,17 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturnArrayWith3Symbols() {
-		sut = new SlotMachine(1,3,10,3);
 		int expected = 3;
 		int actual = sut.getSymbols().size();
 		assertEquals(expected,actual);
 	}
 	
 	@Test
-	public void shouldReturnArrayWithStrings_000_000_000() {
-		sut = new SlotMachine(1,3,10,3);
+	public void shouldReturnArrayWithStrings_000_000_000() {	
 		String expected = "000";
+		when(((Reel) reelMocks.toArray()[0]).getSymbol()).thenReturn("000");
+		when(((Reel) reelMocks.toArray()[1]).getSymbol()).thenReturn("000");
+		when(((Reel) reelMocks.toArray()[2]).getSymbol()).thenReturn("000");
 		Collection<String> symbolStrings = sut.getSymbols();
 		assertEquals(expected,symbolStrings.toArray()[0]);
 		assertEquals(expected,symbolStrings.toArray()[1]);
@@ -74,8 +82,10 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturnArrayWithStrings_BAR_BAR_BAR() {
-		sut = new SlotMachine(1,3,10,3);
 		String expected = "BAR";
+		when(((Reel) reelMocks.toArray()[0]).getSymbol()).thenReturn("BAR");
+		when(((Reel) reelMocks.toArray()[1]).getSymbol()).thenReturn("BAR");
+		when(((Reel) reelMocks.toArray()[2]).getSymbol()).thenReturn("BAR");
 		Collection<String> symbolStrings = sut.getSymbols();
 		assertEquals(expected,symbolStrings.toArray()[0]);
 		assertEquals(expected,symbolStrings.toArray()[1]);
@@ -84,7 +94,9 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturnArrayWithStrings_000_FOO_BAR() {
-		sut = new SlotMachine(1,3,10,3);
+		when(((Reel) reelMocks.toArray()[0]).getSymbol()).thenReturn("000");
+		when(((Reel) reelMocks.toArray()[1]).getSymbol()).thenReturn("FOO");
+		when(((Reel) reelMocks.toArray()[2]).getSymbol()).thenReturn("BAR");
 		Collection<String> symbolStrings = sut.getSymbols();
 		assertEquals("000",symbolStrings.toArray()[0]);
 		assertEquals("FOO",symbolStrings.toArray()[1]);
