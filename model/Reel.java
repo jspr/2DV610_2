@@ -5,6 +5,7 @@ import java.util.Random;
 public class Reel {
 	
 	private Random random;
+	private Symbols symbol;
 
 	public Reel(Random random) {
 		this.random = random;
@@ -16,7 +17,8 @@ public class Reel {
 	}
 
 	public void spin() {
-		int symbolInt = random.nextInt();
+		int symbolInt = random.nextInt(Symbols.values().length);
+		symbol = Symbols.values()[symbolInt];
 	}
 
 }
