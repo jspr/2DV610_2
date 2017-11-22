@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class SlotMachine {
@@ -7,11 +8,13 @@ public class SlotMachine {
 	private int minBet;
 	private int maxBet;
 	private int credit;
+	private int noOfReels;
 	
 	public SlotMachine(int minBet, int maxBet, int credit, int noOfReels) {
 		this.minBet = minBet;
 		this.maxBet = maxBet;
 		this.credit = credit;
+		this.noOfReels = noOfReels;
 	}
 
 	public int getMinBet() {
@@ -26,9 +29,12 @@ public class SlotMachine {
 		return credit;
 	}
 
-	public Collection getSymbols() {
-		// TODO Auto-generated method stub
-		return null;
+	public Collection<String> getSymbols() {
+		ArrayList<String> symbols = new ArrayList<String>();
+		for(int i=0; i<noOfReels; i++) {
+			symbols.add("");
+		}
+		return symbols;
 	}
 
 }
