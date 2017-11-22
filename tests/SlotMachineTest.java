@@ -70,37 +70,43 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturnArrayWithStrings_000_000_000() {	
-		String expected = "000";
-		when(((Reel) reelMocks.toArray()[0]).getSymbol()).thenReturn("000");
-		when(((Reel) reelMocks.toArray()[1]).getSymbol()).thenReturn("000");
-		when(((Reel) reelMocks.toArray()[2]).getSymbol()).thenReturn("000");
-		Collection<String> symbolStrings = sut.getSymbols();
-		assertEquals(expected,symbolStrings.toArray()[0]);
-		assertEquals(expected,symbolStrings.toArray()[1]);
-		assertEquals(expected,symbolStrings.toArray()[2]);
+		ArrayList<String> strings = new ArrayList<String>();
+		strings.add("000");
+		strings.add("000");
+		strings.add("000");
+		shouldReturnCollectionWithSymbolStrings(strings);
 	}
 	
 	@Test
 	public void shouldReturnArrayWithStrings_BAR_BAR_BAR() {
-		String expected = "BAR";
-		when(((Reel) reelMocks.toArray()[0]).getSymbol()).thenReturn("BAR");
-		when(((Reel) reelMocks.toArray()[1]).getSymbol()).thenReturn("BAR");
-		when(((Reel) reelMocks.toArray()[2]).getSymbol()).thenReturn("BAR");
-		Collection<String> symbolStrings = sut.getSymbols();
-		assertEquals(expected,symbolStrings.toArray()[0]);
-		assertEquals(expected,symbolStrings.toArray()[1]);
-		assertEquals(expected,symbolStrings.toArray()[2]);
+		ArrayList<String> strings = new ArrayList<String>();
+		strings.add("BAR");
+		strings.add("BAR");
+		strings.add("BAR");
+		shouldReturnCollectionWithSymbolStrings(strings);
 	}
 	
 	@Test
 	public void shouldReturnArrayWithStrings_000_FOO_BAR() {
-		when(((Reel) reelMocks.toArray()[0]).getSymbol()).thenReturn("000");
-		when(((Reel) reelMocks.toArray()[1]).getSymbol()).thenReturn("FOO");
-		when(((Reel) reelMocks.toArray()[2]).getSymbol()).thenReturn("BAR");
+		ArrayList<String> strings = new ArrayList<String>();
+		strings.add("000");
+		strings.add("FOO");
+		strings.add("BAR");
+		shouldReturnCollectionWithSymbolStrings(strings);
+	}
+	
+	private void shouldReturnCollectionWithSymbolStrings(Collection<String> strings) {
+		int i=0;
+		for(String s : strings) {
+			when(((Reel) reelMocks.toArray()[i]).getSymbol()).thenReturn(s);
+			i++;
+		}
 		Collection<String> symbolStrings = sut.getSymbols();
-		assertEquals("000",symbolStrings.toArray()[0]);
-		assertEquals("FOO",symbolStrings.toArray()[1]);
-		assertEquals("BAR",symbolStrings.toArray()[2]);
+		i=0;
+		for(String s : strings) {
+			assertEquals(s,symbolStrings.toArray()[i]);
+			i++;
+		}
 	}
 
 }
