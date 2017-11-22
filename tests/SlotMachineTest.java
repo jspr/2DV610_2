@@ -14,7 +14,7 @@ public class SlotMachineTest {
 
 	@Before
 	public void setUp() throws Exception {
-		 sut = new SlotMachine(1,3,10);
+		 sut = new SlotMachine(1,3,10,3);
 	}
 
 	@After
@@ -37,7 +37,7 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturnMaxBet1WhenCreditIs1() {
-		SlotMachine sut = new SlotMachine(1,3,1);
+		SlotMachine sut = new SlotMachine(1,3,1,3);
 		int expected = 1;
 		int actual = sut.getMaxBet();
 		assertEquals(expected,actual);
@@ -47,6 +47,14 @@ public class SlotMachineTest {
 	public void shouldReturnCredit10() {
 		int expected = 10;
 		int actual = sut.getCredit();
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void shouldReturnArrayWith3Symbols() {
+		sut = new SlotMachine(1,3,10,3);
+		int expected = 3;
+		int actual = sut.getSymbols().size();
 		assertEquals(expected,actual);
 	}
 

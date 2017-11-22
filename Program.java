@@ -10,7 +10,7 @@ import view.IView;
 public class Program {
 
 	public static void main(String[] args) {
-		SlotMachine slotMachine = new SlotMachine(1,3,10);
+		SlotMachine slotMachine = new SlotMachine(1,3,10,3);
 		IView view = new EnglishView(System.out, new BufferedReader(new InputStreamReader(System.in)));
 		PlayGame playGame = new PlayGame();
 		try {
