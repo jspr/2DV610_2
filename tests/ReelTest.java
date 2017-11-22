@@ -1,6 +1,10 @@
 package tests;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,8 +24,17 @@ public class ReelTest {
 
 	@Test
 	public void shouldReturnString000() {
-		Reel sut = new Reel();
+		Random random = mock(Random.class);	
+		Reel sut = new Reel(random);
 		assertEquals("000", sut.getSymbol());
+	}
+	
+	@Test
+	public void shouldGenerateRandomSymbol() {	
+		Random random = mock(Random.class);	
+		Reel sut = new Reel(random);
+		sut.spin();
+		verify(random).nextInt();	
 	}
 	
 
