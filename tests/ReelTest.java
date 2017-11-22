@@ -16,9 +16,14 @@ import model.Reel;
 import model.Symbols;
 
 public class ReelTest {
+	
+	private Reel sut;
+	private Random random;
 
 	@Before
 	public void setUp() throws Exception {
+		random = mock(Random.class);
+		sut = new Reel(random);
 	}
 
 	@After
@@ -27,32 +32,27 @@ public class ReelTest {
 
 	@Test
 	public void shouldReturnString000() {
-		Random random = mock(Random.class);
 		when(random.nextInt(Symbols.values().length)).thenReturn(0);
-		Reel sut = new Reel(random);
+		sut.spin();
 		assertEquals("000", sut.getSymbol());
 	}
 	
 	@Test
 	public void shouldReturnStringFOO() {
-		Random random = mock(Random.class);
 		when(random.nextInt(Symbols.values().length)).thenReturn(8);
-		Reel sut = new Reel(random);
+		sut.spin();
 		assertEquals("FOO", sut.getSymbol());
 	}
 	
 	@Test
 	public void shouldReturnStringBAR() {
-		Random random = mock(Random.class);
 		when(random.nextInt(Symbols.values().length)).thenReturn(9);
-		Reel sut = new Reel(random);
+		sut.spin();
 		assertEquals("BAR", sut.getSymbol());
 	}
 	
 	@Test
 	public void shouldGenerateRandomSymbol() {	
-		Random random = mock(Random.class);	
-		Reel sut = new Reel(random);
 		sut.spin();
 		verify(random, atLeast(1)).nextInt(Symbols.values().length);	
 	}
