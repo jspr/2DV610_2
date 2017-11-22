@@ -35,7 +35,7 @@ public class SymbolsTest {
 	
 	@Test
 	public void shouldReturnWinTimesBet5() {
-		assertEquals(6, Symbols.SYMBOL_6.getWinTimesBet());
+		assertEquals(5, Symbols.SYMBOL_6.getWinTimesBet());
 	}
 	
 	@Test
