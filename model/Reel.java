@@ -22,8 +22,7 @@ public class Reel {
 	}
 
 	public int getwinTimesBet() {
-		// TODO Auto-generated method stub
-		return 0;
+		return symbol.getWinTimesBet();
 	}
 
 }
