@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import model.Reel;
+import model.Symbols;
 
 public class ReelTest {
 
@@ -34,7 +35,7 @@ public class ReelTest {
 		Random random = mock(Random.class);	
 		Reel sut = new Reel(random);
 		sut.spin();
-		verify(random).nextInt();	
+		verify(random).nextInt(Symbols.values().length);	
 	}
 	
 
