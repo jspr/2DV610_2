@@ -3,9 +3,11 @@ package model;
 import java.util.Random;
 
 public class Reel {
+	
+	private Random random;
 
 	public Reel(Random random) {
-		// TODO Auto-generated constructor stub
+		this.random = random;
 	}
 
 	public String getSymbol() {
@@ -14,8 +16,7 @@ public class Reel {
 	}
 
 	public void spin() {
-		// TODO Auto-generated method stub
-		
+		int symbolInt = random.nextInt();
 	}
 
 }
