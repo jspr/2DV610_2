@@ -9,11 +9,11 @@ public class Reel {
 
 	public Reel(Random random) {
 		this.random = random;
+		spin();
 	}
 
 	public String getSymbol() {
-		// TODO Auto-generated method stub
-		return "000";
+		return symbol.toString();
 	}
 
 	public void spin() {
