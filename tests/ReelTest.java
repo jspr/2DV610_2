@@ -31,6 +31,20 @@ public class ReelTest {
 	}
 	
 	@Test
+	public void shouldReturnStringFOO() {
+		Random random = mock(Random.class);	
+		Reel sut = new Reel(random);
+		assertEquals("FOO", sut.getSymbol());
+	}
+	
+	@Test
+	public void shouldReturnStringBAR() {
+		Random random = mock(Random.class);	
+		Reel sut = new Reel(random);
+		assertEquals("BAR", sut.getSymbol());
+	}
+	
+	@Test
 	public void shouldGenerateRandomSymbol() {	
 		Random random = mock(Random.class);	
 		Reel sut = new Reel(random);
