@@ -21,4 +21,9 @@ public enum Symbols {
 	public String toString() {
 		return symbolString;
 	}
+
+	public int getWinTimesBet() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

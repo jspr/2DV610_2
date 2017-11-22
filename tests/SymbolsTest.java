@@ -27,5 +27,25 @@ public class SymbolsTest {
 	public void shouldReturnStringBAR() {
 		assertEquals("BAR", Symbols.SYMBOL_10.toString());
 	}
+	
+	@Test
+	public void shouldReturnWinTimesBet1() {
+		assertEquals(1, Symbols.SYMBOL_1.getWinTimesBet());
+	}
+	
+	@Test
+	public void shouldReturnWinTimesBet5() {
+		assertEquals(6, Symbols.SYMBOL_6.getWinTimesBet());
+	}
+	
+	@Test
+	public void shouldReturnWinTimesBet10() {
+		assertEquals(10, Symbols.SYMBOL_9.getWinTimesBet());
+	}
+
+	@Test
+	public void shouldReturnWinTimesBet100() {
+		assertEquals(100, Symbols.SYMBOL_10.getWinTimesBet());
+	}
 
 }
