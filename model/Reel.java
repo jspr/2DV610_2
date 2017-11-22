@@ -21,4 +21,9 @@ public class Reel {
 		symbol = Symbols.values()[symbolInt];
 	}
 
+	public int getwinTimesBet() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -57,6 +57,40 @@ public class ReelTest {
 		verify(random, atLeast(1)).nextInt(Symbols.values().length);	
 	}
 	
+	@Test
+	public void shouldReturnInt1() {
+		when(random.nextInt(Symbols.values().length)).thenReturn(0);
+		sut.spin();
+		assertEquals(1, sut.getwinTimesBet());
+	}
+	
+	@Test
+	public void shouldReturnInt2() {
+		when(random.nextInt(Symbols.values().length)).thenReturn(3);
+		sut.spin();
+		assertEquals(2, sut.getwinTimesBet());
+	}
+	
+	@Test
+	public void shouldReturnInt5() {
+		when(random.nextInt(Symbols.values().length)).thenReturn(5);
+		sut.spin();
+		assertEquals(5, sut.getwinTimesBet());
+	}
+	
+	@Test
+	public void shouldReturnInt10() {
+		when(random.nextInt(Symbols.values().length)).thenReturn(8);
+		sut.spin();
+		assertEquals(10, sut.getwinTimesBet());
+	}
+	
+	@Test
+	public void shouldReturnInt100() {
+		when(random.nextInt(Symbols.values().length)).thenReturn(9);
+		sut.spin();
+		assertEquals(100, sut.getwinTimesBet());
+	}
 
 
 }
