@@ -42,6 +42,8 @@ public class SlotMachine {
 		int winnings = 0;
 		if(bet > getMaxBet())
 			throw new RuntimeException("Bet is bigger than max bet.");
+		if(bet < 1)
+			throw new RuntimeException("Bet can't be smaller than 1.");
 		credit -= bet;
 		for(Reel reel : reels) {
 			reel.spin();
