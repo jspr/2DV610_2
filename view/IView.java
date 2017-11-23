@@ -12,11 +12,10 @@ public interface IView
   String getQuitMessage();
   void displayBettingMessage(int min, int max);
   String getBettingMessage();
-  boolean wantsToQuit() throws IOException;
+  boolean wantsToQuit();
   String getSpinCommand();
   String getQuitCommand();
   void displayCredit(int credit);
   String getCreditMessage(int credit);
-  boolean wantsToSpin() throws IOException;
   boolean collectValidCommand() throws IOException;
 }

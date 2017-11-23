@@ -8,14 +8,15 @@ public class EnglishView implements IView{
 
 	private PrintStream printStream;
 	private BufferedReader bufferedReader;
+	private boolean quit = false;
 	
 	private final String WELCOME_MESSAGE = "Welcome to try your luck on the Slot Machine!";
 	private final String INSTRUCTIONS = "Enter '%s' to spin or '%s' to quit: ";
 	private final String QUIT_MESSAGE = "Thank you for playing! Bye for now.";
 	private final String BETTING_MESSAGE = "Enter amount to bet (min: %s, max: %s): ";
 	private final String CREDIT = "CREDIT:";
-	private final String SPIN_COMMAND = "s";
-	private final String QUIT_COMMAND = "q";
+	private final String SPIN_COMMAND = "S";
+	private final String QUIT_COMMAND = "Q";
 	
 	public EnglishView(PrintStream printStream, BufferedReader bufferedReader) {
 		this.printStream = printStream;
@@ -53,19 +54,16 @@ public class EnglishView implements IView{
 	}
 
 	@Override
-	public boolean wantsToQuit() throws IOException {
-		return bufferedReader.readLine().trim().toUpperCase().equals("Q");
-	}
-	
-	@Override
-	public boolean wantsToSpin() throws IOException {
-		return bufferedReader.readLine().trim().toUpperCase().equals("S");
+	public boolean wantsToQuit() {
+		return quit;
 	}
 	
 	@Override
 	public boolean collectValidCommand() throws IOException {
-		String input = bufferedReader.readLine();
-		return (input.trim().toUpperCase().equals("S") || input.trim().toUpperCase().equals("Q"));
+		String input = bufferedReader.readLine().trim().toUpperCase();
+		if(input.equals(QUIT_COMMAND))
+			quit = true;
+		return (input.equals(SPIN_COMMAND) || input.equals(QUIT_COMMAND));
 	}
 
 	@Override
