@@ -113,6 +113,41 @@ public class SlotMachineTest {
 	    } catch(RuntimeException e) { }
 	}
 	
+	@Test
+	public void shouldReturn1Bet1Odds1() {
+		int expected = 1;
+		int actual = sut.spin(1);
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void shouldReturn6Bet3Odds2() {
+		int expected = 6;
+		int actual = sut.spin(3);
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void shouldReturn200Bet2Odds100() {
+		int expected = 200;
+		int actual = sut.spin(2);
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void shouldReturn0BetAndLoseAllReelsOff() {
+		int expected = 0;
+		int actual = sut.spin(2);
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void shouldReturn0BetAndLoseTwoReelsOff() {
+		int expected = 0;
+		int actual = sut.spin(2);
+		assertEquals(expected,actual);
+	}
+	
 	private void shouldReturnCollectionWithSymbolStrings(Collection<String> strings) {
 		int i=0;
 		for(String s : strings) {

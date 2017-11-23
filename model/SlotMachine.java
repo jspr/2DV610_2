@@ -37,12 +37,13 @@ public class SlotMachine {
 		return symbols;
 	}
 
-	public void spin(int bet) {
+	public int spin(int bet) {
 		if(bet > getMaxBet())
 			throw new RuntimeException("Bet is bigger than max bet.");
 		for(Reel reel : reels) {
 			reel.spin();
 		}
+		return 0;
 	}
 
 }
