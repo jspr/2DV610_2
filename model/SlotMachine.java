@@ -37,4 +37,9 @@ public class SlotMachine {
 		return symbols;
 	}
 
+	public void spin() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

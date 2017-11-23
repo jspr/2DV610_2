@@ -2,8 +2,11 @@ package tests;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -93,6 +96,15 @@ public class SlotMachineTest {
 		strings.add("FOO");
 		strings.add("BAR");
 		shouldReturnCollectionWithSymbolStrings(strings);
+	}
+	
+	
+	@Test
+	public void shouldCallSpinOnReels() {
+		sut.spin();
+		for(Reel reel : reelMocks) {
+			verify(reel).spin();
+		}
 	}
 	
 	private void shouldReturnCollectionWithSymbolStrings(Collection<String> strings) {
