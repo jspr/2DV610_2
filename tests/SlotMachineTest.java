@@ -114,6 +114,14 @@ public class SlotMachineTest {
 	}
 	
 	@Test
+	public void shouldThrowRuntimeExceptionWhenBetIsSmallerThan1() {
+		try {
+			sut.spin(-1);
+	        fail();
+	    } catch(RuntimeException e) { }
+	}
+	
+	@Test
 	public void shouldReturn1Bet1Odds1() {
 		shouldReturnBetTimesOdds(1,1,"000");
 	}
