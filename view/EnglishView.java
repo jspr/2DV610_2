@@ -61,6 +61,12 @@ public class EnglishView implements IView{
 	public boolean wantsToSpin() throws IOException {
 		return bufferedReader.readLine().trim().toUpperCase().equals("S");
 	}
+	
+	@Override
+	public boolean collectValidCommand() throws IOException {
+		String input = bufferedReader.readLine();
+		return (input.trim().toUpperCase().equals("S") || input.trim().toUpperCase().equals("Q"));
+	}
 
 	@Override
 	public void displayBettingMessage(int min, int max) {
@@ -107,11 +113,7 @@ public class EnglishView implements IView{
 		return sb.toString();
 	}
 
-	@Override
-	public boolean collectValidCommand() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 
 

@@ -126,7 +126,7 @@ public class IViewTest {
 	@Test
 	public void shouldReturnFalseCollectValidCommandOnInvalidCharacter() throws IOException {
 		when(bufferedReader.readLine()).thenReturn("Z");
-		assertTrue(sut.collectValidCommand());
+		assertFalse(sut.collectValidCommand());
 	}
 	
 	@Test
