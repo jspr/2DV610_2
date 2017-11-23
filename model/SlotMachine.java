@@ -38,8 +38,9 @@ public class SlotMachine {
 	}
 
 	public void spin() {
-		// TODO Auto-generated method stub
-		
+		for(Reel reel : reels) {
+			reel.spin();
+		}
 	}
 
 }
