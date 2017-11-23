@@ -42,6 +42,7 @@ public class SlotMachine {
 		int winnings = 0;
 		if(bet > getMaxBet())
 			throw new RuntimeException("Bet is bigger than max bet.");
+		credit -= bet;
 		for(Reel reel : reels) {
 			reel.spin();
 		}
@@ -51,6 +52,7 @@ public class SlotMachine {
 		}
 		if(symbols.size() == 1)
 			winnings = bet * ((Reel) reels.toArray()[0]).getwinTimesBet();
+		credit += winnings;
 		return winnings;
 	}
 
