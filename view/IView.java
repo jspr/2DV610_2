@@ -18,4 +18,5 @@ public interface IView
   void displayCredit(int credit);
   String getCreditMessage(int credit);
   boolean wantsToSpin() throws IOException;
+  boolean collectValidCommand();
 }

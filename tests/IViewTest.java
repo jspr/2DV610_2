@@ -112,6 +112,24 @@ public class IViewTest {
 	}
 	
 	@Test
+	public void shouldReturnTrueCollectValidCommandOnInputSpinCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn(sut.getSpinCommand());
+		assertTrue(sut.collectValidCommand());
+	}
+	
+	@Test
+	public void shouldReturnTrueCollectValidCommandOnInputQuitCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn(sut.getQuitCommand());
+		assertTrue(sut.collectValidCommand());
+	}
+	
+	@Test
+	public void shouldReturnFalseCollectValidCommandOnInvalidCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("Z");
+		assertTrue(sut.collectValidCommand());
+	}
+	
+	@Test
 	public void shouldDisplayCredit() {
 		sut.displayCredit(1);
 		verify(printStream).println(sut.getCreditMessage(1));

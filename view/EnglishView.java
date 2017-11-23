@@ -107,6 +107,12 @@ public class EnglishView implements IView{
 		return sb.toString();
 	}
 
+	@Override
+	public boolean collectValidCommand() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 
 }
