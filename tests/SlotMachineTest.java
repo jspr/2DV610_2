@@ -99,10 +99,18 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldCallSpinOnReels() {
-		sut.spin();
+		sut.spin(1);
 		for(Reel reel : reelMocks) {
 			verify(reel).spin();
 		}
+	}
+	
+	@Test
+	public void shouldThrowRuntimeExceptionWhenBetIsBiggerThanMaxBet() {
+		try {
+			sut.spin(1000);
+	        fail();
+	    } catch(RuntimeException e) { }
 	}
 	
 	private void shouldReturnCollectionWithSymbolStrings(Collection<String> strings) {

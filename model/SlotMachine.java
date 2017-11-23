@@ -37,7 +37,7 @@ public class SlotMachine {
 		return symbols;
 	}
 
-	public void spin() {
+	public void spin(int bet) {
 		for(Reel reel : reels) {
 			reel.spin();
 		}
