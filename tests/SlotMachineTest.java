@@ -160,6 +160,58 @@ public class SlotMachineTest {
 		assertEquals(expected,actual);
 	}
 	
+	@Test
+	public void shouldUpdateCreditTo9_LoseBet1() {
+		int i = 0;
+		for(Reel reel : reelMocks) {
+			if(i==0)
+				when(reel.getSymbol()).thenReturn("BAR");
+			else
+				when(reel.getSymbol()).thenReturn("FOO");
+			i++;
+		}
+		int expected = 9;
+		sut.spin(1);
+		int actual = sut.getCredit();
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void shouldUpdateCreditTo108_Win200Bet2Odds100() {
+		int expected = 108;
+		for(Reel reel : reelMocks) {
+			when(reel.getSymbol()).thenReturn("BAR");
+			when(reel.getwinTimesBet()).thenReturn(100);
+		}
+		sut.spin(2);
+		int actual = sut.getCredit();
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void shouldUpdateCreditTo13_Win6Bet3Odds2() {
+		int expected = 13;
+		for(Reel reel : reelMocks) {
+			when(reel.getSymbol()).thenReturn("010");
+			when(reel.getwinTimesBet()).thenReturn(2);
+		}
+		sut.spin(3);
+		int actual = sut.getCredit();
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void shouldUpdateCreditTo10_Win1Bet1Odds1() {
+		int expected = 10;
+		for(Reel reel : reelMocks) {
+			when(reel.getSymbol()).thenReturn("000");
+			when(reel.getwinTimesBet()).thenReturn(1);
+		}
+		sut.spin(1);
+		int actual = sut.getCredit();
+		assertEquals(expected,actual);
+	}
+	
 	private void shouldReturnCollectionWithSymbolStrings(Collection<String> strings) {
 		int i=0;
 		for(String s : strings) {
