@@ -115,6 +115,10 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturn1Bet1Odds1() {
+		for(Reel reel : reelMocks) {
+			when(reel.getSymbol()).thenReturn("000");
+			when(reel.getwinTimesBet()).thenReturn(1);
+		}	
 		int expected = 1;
 		int actual = sut.spin(1);
 		assertEquals(expected,actual);
@@ -122,6 +126,10 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturn6Bet3Odds2() {
+		for(Reel reel : reelMocks) {
+			when(reel.getSymbol()).thenReturn("010");
+			when(reel.getwinTimesBet()).thenReturn(2);
+		}
 		int expected = 6;
 		int actual = sut.spin(3);
 		assertEquals(expected,actual);
@@ -129,6 +137,10 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturn200Bet2Odds100() {
+		for(Reel reel : reelMocks) {
+			when(reel.getSymbol()).thenReturn("BAR");
+			when(reel.getwinTimesBet()).thenReturn(100);
+		}
 		int expected = 200;
 		int actual = sut.spin(2);
 		assertEquals(expected,actual);
@@ -136,6 +148,16 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturn0BetAndLoseAllReelsOff() {
+		int i = 0;
+		for(Reel reel : reelMocks) {
+			if(i==0)
+				when(reel.getSymbol()).thenReturn("BAR");
+			else if(i==1)
+				when(reel.getSymbol()).thenReturn("FOO");
+			else
+				when(reel.getSymbol()).thenReturn("000");
+			i++;
+		}
 		int expected = 0;
 		int actual = sut.spin(2);
 		assertEquals(expected,actual);
@@ -143,6 +165,14 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturn0BetAndLoseTwoReelsOff() {
+		int i = 0;
+		for(Reel reel : reelMocks) {
+			if(i==0)
+				when(reel.getSymbol()).thenReturn("BAR");
+			else
+				when(reel.getSymbol()).thenReturn("FOO");
+			i++;
+		}
 		int expected = 0;
 		int actual = sut.spin(2);
 		assertEquals(expected,actual);

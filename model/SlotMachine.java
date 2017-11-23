@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 public class SlotMachine {
 	
@@ -38,12 +39,19 @@ public class SlotMachine {
 	}
 
 	public int spin(int bet) {
+		int winnings = 0;
 		if(bet > getMaxBet())
 			throw new RuntimeException("Bet is bigger than max bet.");
 		for(Reel reel : reels) {
 			reel.spin();
 		}
-		return 0;
+		HashSet<String> symbols = new HashSet<String>();
+		for(String symbol : getSymbols()) {
+			symbols.add(symbol);
+		}
+		if(symbols.size() == 1)
+			winnings = bet * ((Reel) reels.toArray()[0]).getwinTimesBet();
+		return winnings;
 	}
 
 }
