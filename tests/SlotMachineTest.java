@@ -115,35 +115,17 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldReturn1Bet1Odds1() {
-		for(Reel reel : reelMocks) {
-			when(reel.getSymbol()).thenReturn("000");
-			when(reel.getwinTimesBet()).thenReturn(1);
-		}	
-		int expected = 1;
-		int actual = sut.spin(1);
-		assertEquals(expected,actual);
+		shouldReturnBetTimesOdds(1,1,"000");
 	}
 	
 	@Test
 	public void shouldReturn6Bet3Odds2() {
-		for(Reel reel : reelMocks) {
-			when(reel.getSymbol()).thenReturn("010");
-			when(reel.getwinTimesBet()).thenReturn(2);
-		}
-		int expected = 6;
-		int actual = sut.spin(3);
-		assertEquals(expected,actual);
+		shouldReturnBetTimesOdds(3,2,"010");
 	}
 	
 	@Test
 	public void shouldReturn200Bet2Odds100() {
-		for(Reel reel : reelMocks) {
-			when(reel.getSymbol()).thenReturn("BAR");
-			when(reel.getwinTimesBet()).thenReturn(100);
-		}
-		int expected = 200;
-		int actual = sut.spin(2);
-		assertEquals(expected,actual);
+		shouldReturnBetTimesOdds(2,100,"BAR");
 	}
 	
 	@Test
@@ -190,6 +172,16 @@ public class SlotMachineTest {
 			assertEquals(s,symbolStrings.toArray()[i]);
 			i++;
 		}
+	}
+	
+	private void shouldReturnBetTimesOdds(int bet, int odds, String symbol) {
+		for(Reel reel : reelMocks) {
+			when(reel.getSymbol()).thenReturn(symbol);
+			when(reel.getwinTimesBet()).thenReturn(odds);
+		}	
+		int expected = bet * odds;
+		int actual = sut.spin(bet);
+		assertEquals(expected,actual);
 	}
 
 }
