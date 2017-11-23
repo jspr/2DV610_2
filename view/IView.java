@@ -17,4 +17,5 @@ public interface IView
   String getQuitCommand();
   void displayCredit(int credit);
   String getCreditMessage(int credit);
+  boolean wantsToSpin();
 }

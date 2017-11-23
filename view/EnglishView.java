@@ -102,4 +102,10 @@ public class EnglishView implements IView{
 		return sb.toString();
 	}
 
+	@Override
+	public boolean wantsToSpin() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

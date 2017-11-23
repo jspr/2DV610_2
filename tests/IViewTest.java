@@ -88,6 +88,30 @@ public class IViewTest {
 	}
 	
 	@Test
+	public void shouldReturnFalseWantsToQuitOnInputOtherCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("Z");
+		assertFalse(sut.wantsToQuit());
+	}
+	
+	@Test
+	public void shouldReturnFalseWantsToSpinOnInputQuitCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn(sut.getQuitCommand());
+		assertFalse(sut.wantsToSpin());
+	}
+	
+	@Test
+	public void shouldReturnTrueWantsToSpinOnInputSpinCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn(sut.getSpinCommand());
+		assertTrue(sut.wantsToSpin());
+	}
+	
+	@Test
+	public void shouldReturnFalseWantsToSpinOnInputOtherCharacter() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("Z");
+		assertFalse(sut.wantsToSpin());
+	}
+	
+	@Test
 	public void shouldDisplayCredit() {
 		sut.displayCredit(1);
 		verify(printStream).println(sut.getCreditMessage(1));
