@@ -171,8 +171,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayWinMessage(int winnings) {
-		// TODO Auto-generated method stub
-		
+		printStream.println("Congratulations! You won: " + winnings + "credit(s).");	
 	}
 
 
