@@ -41,7 +41,7 @@ public class SlotMachine {
 	public int spin(int bet) {
 		int winnings = 0;
 		if(bet > getMaxBet())
-			throw new RuntimeException("Bet is bigger than max bet.");
+			throw new RuntimeException("Bet is larger than max bet.");
 		if(bet < 1)
 			throw new RuntimeException("Bet can't be smaller than 1.");
 		credit -= bet;
@@ -59,8 +59,7 @@ public class SlotMachine {
 	}
 
 	public boolean isGameOver() {
-		// TODO Auto-generated method stub
-		return false;
+		return credit <= 0;
 	}
 
 }
