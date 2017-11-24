@@ -178,7 +178,7 @@ public class IViewTest {
 		inputCollection.add("FOO");
 		inputCollection.add("001");	
 		Collection<String> returnedCollection = sut.getReelMessages(inputCollection);
-		sut.displayReelMessage();
+		sut.displayReelMessage(inputCollection);
 		for(String string : returnedCollection) {
 			verify(printStream).println(string);
 		}

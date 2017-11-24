@@ -160,9 +160,10 @@ public class EnglishView implements IView{
 	}
 
 	@Override
-	public void displayReelMessage() {
-		// TODO Auto-generated method stub
-		
+	public void displayReelMessage(Collection<String> inputCollection) {
+		for(String string : getReelMessages(inputCollection)) {
+			 printStream.println(string);
+		}
 	}
 
 
