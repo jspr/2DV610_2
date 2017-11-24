@@ -3,6 +3,7 @@ package view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Collection;
 
 public class EnglishView implements IView{
 
@@ -120,6 +121,12 @@ public class EnglishView implements IView{
 	@Override
 	public String getGameOverMessage() {
 		return GAME_OVER_MESSAGE;
+	}
+
+	@Override
+	public Collection<String> getReelMessages(Collection<String> inputCollection) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

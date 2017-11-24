@@ -1,5 +1,6 @@
 package tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
@@ -8,6 +9,7 @@ import org.junit.runners.Parameterized;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -126,6 +128,47 @@ public class IViewTest {
 	public void shouldDisplayGameOverMessage() {
 		sut.displayGameOverMessage();
 		verify(printStream).println(sut.getGameOverMessage());
+	}
+	
+	@Test
+	public void shouldReturnCollectionStringForPrintoutFor1ReelBAR() {
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("BAR");
+		String expected = System.lineSeparator() +
+				"  #########" + System.lineSeparator() +
+				"  #       #" + System.lineSeparator() +
+				"  #  BAR  #" + System.lineSeparator() +
+				"  #       #" + System.lineSeparator() +
+				"  #########" + System.lineSeparator() +
+				System.lineSeparator();
+		Collection<String> returnedCollection = sut.getReelMessages(inputCollection);
+		assertEquals(returnedCollection.size(),1);
+		assertEquals(expected,returnedCollection.toArray()[0]);
+	}
+	
+	@Test
+	public void shouldReturnCollectionStringForPrintoutFor2ReelsBAR_FOO() {
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("BAR");
+		inputCollection.add("FOO");
+		String expected1 = System.lineSeparator() +
+				"  #########  " + System.lineSeparator() +
+				"  #       #  " + System.lineSeparator() +
+				"  #  BAR  #  " + System.lineSeparator() +
+				"  #       #  " + System.lineSeparator() +
+				"  #########  " + System.lineSeparator() +
+				System.lineSeparator();
+		String expected2 = System.lineSeparator() +
+				"  #########    #########  " + System.lineSeparator() +
+				"  #       #    #       #  " + System.lineSeparator() +
+				"  #  BAR  #    #  FOO  #  " + System.lineSeparator() +
+				"  #       #    #       #  " + System.lineSeparator() +
+				"  #########    #########  " + System.lineSeparator() +
+				System.lineSeparator();
+		Collection<String> returnedCollection = sut.getReelMessages(inputCollection);
+		assertEquals(returnedCollection.size(),2);
+		assertEquals(expected1,returnedCollection.toArray()[0]);
+		assertEquals(expected2,returnedCollection.toArray()[1]);
 	}
 
 

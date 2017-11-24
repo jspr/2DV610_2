@@ -1,6 +1,7 @@
 package view;
 
 import java.io.IOException;
+import java.util.Collection;
 
 public interface IView
 {
@@ -20,4 +21,5 @@ public interface IView
   boolean collectValidCommand() throws IOException;
   void displayGameOverMessage();
   String getGameOverMessage();
+Collection<String> getReelMessages(Collection<String> inputCollection);
 }
