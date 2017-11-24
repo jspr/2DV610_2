@@ -113,7 +113,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayGameOverMessage() {
-		printStream.println();	
+		printStream.println("GAME OVER! All your money are belong to us!");	
 	}
 
 
