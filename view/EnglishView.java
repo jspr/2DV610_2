@@ -176,8 +176,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayLoseMessage() {
-		// TODO Auto-generated method stub
-		
+		printStream.println("No luck this time.");	
 	}
 
 
