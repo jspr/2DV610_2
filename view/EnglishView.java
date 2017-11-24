@@ -174,5 +174,11 @@ public class EnglishView implements IView{
 		printStream.println("Congratulations! You won: " + winnings + "credit(s).");	
 	}
 
+	@Override
+	public void displayLoseMessage() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

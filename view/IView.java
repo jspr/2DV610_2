@@ -24,4 +24,5 @@ public interface IView
   Collection<String> getReelMessages(Collection<String> inputCollection);
   void displayReelMessage(Collection<String> inputCollection) throws InterruptedException;
 void displayWinMessage(int winnings);
+void displayLoseMessage();
 }

@@ -189,6 +189,12 @@ public class IViewTest {
 		sut.displayWinMessage(5);
 		verify(printStream).println("Congratulations! You won: " + 5 + "credit(s).");
 	}
+	
+	@Test
+	public void shouldDisplayLoseMessage() {
+		sut.displayLoseMessage();
+		verify(printStream).println("No luck this time.");
+	}
 
 
 }
