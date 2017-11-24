@@ -125,7 +125,7 @@ public class IViewTest {
 	@Test
 	public void shouldDisplayGameOverMessage() {
 		sut.displayGameOverMessage();
-		verify(printStream).println();
+		verify(printStream).println("GAME OVER! All your money are belong to us!");
 	}
 
 
