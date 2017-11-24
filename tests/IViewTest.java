@@ -170,6 +170,19 @@ public class IViewTest {
 		assertEquals(expected1,returnedCollection.toArray()[0]);
 		assertEquals(expected2,returnedCollection.toArray()[1]);
 	}
+	
+	@Test
+	public void shouldDisplayReelMessage() {
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("BAR");
+		inputCollection.add("FOO");
+		inputCollection.add("001");	
+		Collection<String> returnedCollection = sut.getReelMessages(inputCollection);
+		sut.displayReelMessage();
+		for(String string : returnedCollection) {
+			verify(printStream).println(string);
+		}
+	}
 
 
 }

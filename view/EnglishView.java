@@ -159,5 +159,11 @@ public class EnglishView implements IView{
 		return returnCollection;
 	}
 
+	@Override
+	public void displayReelMessage() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

@@ -21,5 +21,6 @@ public interface IView
   boolean collectValidCommand() throws IOException;
   void displayGameOverMessage();
   String getGameOverMessage();
-Collection<String> getReelMessages(Collection<String> inputCollection);
+  Collection<String> getReelMessages(Collection<String> inputCollection);
+  void displayReelMessage();
 }
