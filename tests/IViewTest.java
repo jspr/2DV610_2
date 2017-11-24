@@ -183,6 +183,12 @@ public class IViewTest {
 			verify(printStream).println(string);
 		}
 	}
+	
+	@Test
+	public void shouldDisplayWinMessage5Credits() {
+		sut.displayWinMessage(5);
+		verify(printStream).println("Congratulations! You won: " + 5 + "credit(s).");
+	}
 
 
 }
