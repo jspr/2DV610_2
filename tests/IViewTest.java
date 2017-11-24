@@ -187,13 +187,13 @@ public class IViewTest {
 	@Test
 	public void shouldDisplayWinMessage5Credits() {
 		sut.displayWinMessage(5);
-		verify(printStream).println("Congratulations! You won: " + 5 + "credit(s).");
+		verify(printStream).printf(sut.getWinMessage() + System.lineSeparator(), 5);
 	}
 	
 	@Test
 	public void shouldDisplayLoseMessage() {
 		sut.displayLoseMessage();
-		verify(printStream).println("No luck this time.");
+		verify(printStream).println(sut.getLoseMessage());
 	}
 
 

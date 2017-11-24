@@ -17,7 +17,9 @@ public class EnglishView implements IView{
 	private final String INSTRUCTIONS = "Enter '%s' to spin or '%s' to quit: ";
 	private final String QUIT_MESSAGE = "Thank you for playing! Bye for now.";
 	private final String BETTING_MESSAGE = "Enter amount to bet (min: %s, max: %s): ";
-	private final String GAME_OVER_MESSAGE = "GAME OVER! All your money are belong to us!";
+	private final String GAME_OVER_MESSAGE = "GAME OVER! All your credits are belong to us!";
+	private final String LOSE_MESSAGE = "No luck this time.";
+	private final String WIN_MESSAGE = "Congratulations! You won: %s credit(s).";
 	private final String CREDIT = "CREDIT:";
 	private final String SPIN_COMMAND = "S";
 	private final String QUIT_COMMAND = "Q";
@@ -171,12 +173,22 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayWinMessage(int winnings) {
-		printStream.println("Congratulations! You won: " + winnings + "credit(s).");	
+		printStream.printf(WIN_MESSAGE + System.lineSeparator(), winnings);	
 	}
 
 	@Override
 	public void displayLoseMessage() {
-		printStream.println("No luck this time.");	
+		printStream.println(LOSE_MESSAGE);	
+	}
+
+	@Override
+	public String getWinMessage() {
+		return WIN_MESSAGE;
+	}
+
+	@Override
+	public String getLoseMessage() {
+		return LOSE_MESSAGE;
 	}
 
 

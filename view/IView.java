@@ -23,6 +23,8 @@ public interface IView
   String getGameOverMessage();
   Collection<String> getReelMessages(Collection<String> inputCollection);
   void displayReelMessage(Collection<String> inputCollection) throws InterruptedException;
-void displayWinMessage(int winnings);
-void displayLoseMessage();
+  void displayWinMessage(int winnings);
+  void displayLoseMessage();
+  String getWinMessage();
+  String getLoseMessage();
 }
