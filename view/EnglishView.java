@@ -113,8 +113,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayGameOverMessage() {
-		// TODO Auto-generated method stub
-		
+		printStream.println();	
 	}
 
 
