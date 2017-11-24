@@ -172,7 +172,7 @@ public class IViewTest {
 	}
 	
 	@Test
-	public void shouldDisplayReelMessage() {
+	public void shouldDisplayReelMessage() throws InterruptedException {
 		Collection<String> inputCollection = new ArrayList<String>();
 		inputCollection.add("BAR");
 		inputCollection.add("FOO");

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 public class EnglishView implements IView{
 
@@ -160,9 +161,11 @@ public class EnglishView implements IView{
 	}
 
 	@Override
-	public void displayReelMessage(Collection<String> inputCollection) {
+	public void displayReelMessage(Collection<String> inputCollection) throws InterruptedException {
+		TimeUnit.SECONDS.sleep(1);
 		for(String string : getReelMessages(inputCollection)) {
 			 printStream.println(string);
+			 TimeUnit.SECONDS.sleep(1);
 		}
 	}
 

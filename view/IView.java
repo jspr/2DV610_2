@@ -22,5 +22,5 @@ public interface IView
   void displayGameOverMessage();
   String getGameOverMessage();
   Collection<String> getReelMessages(Collection<String> inputCollection);
-  void displayReelMessage(Collection<String> inputCollection);
+  void displayReelMessage(Collection<String> inputCollection) throws InterruptedException;
 }
