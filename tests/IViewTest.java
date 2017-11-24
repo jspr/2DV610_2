@@ -121,6 +121,12 @@ public class IViewTest {
 		sut.displayCredit(10);
 		verify(printStream).println(sut.getCreditMessage(10));
 	}
+	
+	@Test
+	public void shouldDisplayGameOverMessage() {
+		sut.displayGameOverMessage();
+		verify(printStream).println();
+	}
 
 
 }

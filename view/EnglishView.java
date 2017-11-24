@@ -111,6 +111,12 @@ public class EnglishView implements IView{
 		return sb.toString();
 	}
 
+	@Override
+	public void displayGameOverMessage() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 
