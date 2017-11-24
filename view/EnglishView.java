@@ -14,6 +14,7 @@ public class EnglishView implements IView{
 	private final String INSTRUCTIONS = "Enter '%s' to spin or '%s' to quit: ";
 	private final String QUIT_MESSAGE = "Thank you for playing! Bye for now.";
 	private final String BETTING_MESSAGE = "Enter amount to bet (min: %s, max: %s): ";
+	private final String GAME_OVER_MESSAGE = "GAME OVER! All your money are belong to us!";
 	private final String CREDIT = "CREDIT:";
 	private final String SPIN_COMMAND = "S";
 	private final String QUIT_COMMAND = "Q";
@@ -113,7 +114,12 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayGameOverMessage() {
-		printStream.println("GAME OVER! All your money are belong to us!");	
+		printStream.println(GAME_OVER_MESSAGE);	
+	}
+
+	@Override
+	public String getGameOverMessage() {
+		return GAME_OVER_MESSAGE;
 	}
 
 

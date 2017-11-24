@@ -19,4 +19,5 @@ public interface IView
   String getCreditMessage(int credit);
   boolean collectValidCommand() throws IOException;
   void displayGameOverMessage();
+  String getGameOverMessage();
 }
