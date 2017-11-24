@@ -58,4 +58,9 @@ public class SlotMachine {
 		return winnings;
 	}
 
+	public boolean isGameOver() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

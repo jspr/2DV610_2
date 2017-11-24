@@ -199,6 +199,18 @@ public class SlotMachineTest {
 		shouldUpdateCreditWithBetAndWinnings(1, 1, "000");
 	}
 	
+	@Test
+	public void shouldReturnTrueGameOverCreditsAre0() {
+		SlotMachine sut = new SlotMachine(1,3,0,reelMocks);
+		assertTrue(sut.isGameOver());
+	}
+	
+	@Test
+	public void shouldReturnFalseGameOverCreditsAre10() {
+		SlotMachine sut = new SlotMachine(1,3,10,reelMocks);
+		assertFalse(sut.isGameOver());
+	}
+	
 	private void shouldReturnCollectionWithSymbolStrings(Collection<String> strings) {
 		int i=0;
 		for(String s : strings) {
