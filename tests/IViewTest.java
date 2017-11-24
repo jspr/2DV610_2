@@ -135,11 +135,11 @@ public class IViewTest {
 		Collection<String> inputCollection = new ArrayList<String>();
 		inputCollection.add("BAR");
 		String expected = System.lineSeparator() +
-				"  #########" + System.lineSeparator() +
-				"  #       #" + System.lineSeparator() +
-				"  #  BAR  #" + System.lineSeparator() +
-				"  #       #" + System.lineSeparator() +
-				"  #########" + System.lineSeparator() +
+				"  #########  " + System.lineSeparator() +
+				"  #       #  " + System.lineSeparator() +
+				"  #  BAR  #  " + System.lineSeparator() +
+				"  #       #  " + System.lineSeparator() +
+				"  #########  " + System.lineSeparator() +
 				System.lineSeparator();
 		Collection<String> returnedCollection = sut.getReelMessages(inputCollection);
 		assertEquals(returnedCollection.size(),1);

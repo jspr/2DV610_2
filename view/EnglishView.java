@@ -3,6 +3,7 @@ package view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class EnglishView implements IView{
@@ -125,12 +126,38 @@ public class EnglishView implements IView{
 
 	@Override
 	public Collection<String> getReelMessages(Collection<String> inputCollection) {
-		// TODO Auto-generated method stub
-		return null;
+		String line1 = "  #########  ";
+		String line2 = "  #       #  ";
+		String line3a = "  #  ";
+		String line3b = "  #  ";
+		String line4 = "  #       #  ";
+		String line5 = "  #########  ";
+		
+		StringBuilder sb1 = new StringBuilder();
+		StringBuilder sb2 = new StringBuilder();
+		StringBuilder sb3 = new StringBuilder();
+		StringBuilder sb4 = new StringBuilder();
+		StringBuilder sb5 = new StringBuilder();
+		
+		Collection<String> returnCollection = new ArrayList<String>();
+		
+		for(String string : inputCollection) {
+			sb1.append(line1);
+			sb2.append(line2);
+			sb3.append(line3a + string + line3b);
+			sb4.append(line4);
+			sb5.append(line5);
+			returnCollection.add(System.lineSeparator() +
+					sb1 + System.lineSeparator() +
+					sb2 + System.lineSeparator() +
+					sb3 + System.lineSeparator() +
+					sb4 + System.lineSeparator() +
+					sb5 + System.lineSeparator() +
+					System.lineSeparator());
+		}
+		
+		return returnCollection;
 	}
-
-
-
 
 
 }
