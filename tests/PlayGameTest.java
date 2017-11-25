@@ -52,8 +52,8 @@ public class PlayGameTest {
 	
 	@Test
 	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayQuitMessage_IfWantsToQuitIsTrue() {
-		when(slotMachine.isGameOver()).thenReturn(true);
-		when(view.wantsToQuit()).thenReturn(false);
+		when(slotMachine.isGameOver()).thenReturn(false);
+		when(view.wantsToQuit()).thenReturn(true);
 		when(slotMachine.getCredit()).thenReturn(10);
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
