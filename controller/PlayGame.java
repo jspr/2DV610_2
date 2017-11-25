@@ -7,8 +7,9 @@ public class PlayGame {
 	
 	public void play(SlotMachine slotMachine, IView view) {
 		view.displayWelcomeMessage();
-		view.displayCredit(slotMachine.getCredit());
-
+		while(!slotMachine.isGameOver() && !view.wantsToQuit()) {
+			view.displayCredit(slotMachine.getCredit());
+		}
 	}
 
 }
