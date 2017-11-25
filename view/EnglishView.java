@@ -11,6 +11,7 @@ public class EnglishView implements IView{
 
 	private PrintStream printStream;
 	private BufferedReader bufferedReader;
+	private TimeUnit timeUnit;
 	private boolean quit = false;
 	
 	private final String WELCOME_MESSAGE = "Welcome to try your luck on the Slot Machine!";
@@ -27,6 +28,7 @@ public class EnglishView implements IView{
 	public EnglishView(PrintStream printStream, BufferedReader bufferedReader, TimeUnit timeUnit) {
 		this.printStream = printStream;
 		this.bufferedReader = bufferedReader;
+		this.timeUnit = timeUnit;
 	}
 
 	@Override
@@ -164,10 +166,10 @@ public class EnglishView implements IView{
 
 	@Override
 	public void displayReelMessage(Collection<String> inputCollection) throws InterruptedException {
-		TimeUnit.SECONDS.sleep(1);
+		timeUnit.sleep(1);
 		for(String string : getReelMessages(inputCollection)) {
 			 printStream.println(string);
-			 TimeUnit.SECONDS.sleep(1);
+			 timeUnit.sleep(1);
 		}
 	}
 

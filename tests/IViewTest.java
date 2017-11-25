@@ -187,6 +187,16 @@ public class IViewTest {
 	}
 	
 	@Test
+	public void shouldPauseWhenDisplayingReels() throws InterruptedException {
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("BAR");
+		inputCollection.add("FOO");
+		inputCollection.add("001");	
+		sut.displayReelMessage(inputCollection);
+		verify(timeUnit, times(4)).sleep(1);
+	}
+	
+	@Test
 	public void shouldDisplayWinMessage5Credits() {
 		sut.displayWinMessage(5);
 		verify(printStream).printf(sut.getWinMessage() + System.lineSeparator(), 5);
@@ -198,15 +208,7 @@ public class IViewTest {
 		verify(printStream).println(sut.getLoseMessage());
 	}
 	
-	@Test
-	public void shouldPauseWhenDisplayingReels() throws InterruptedException {
-		Collection<String> inputCollection = new ArrayList<String>();
-		inputCollection.add("BAR");
-		inputCollection.add("FOO");
-		inputCollection.add("001");	
-		sut.displayReelMessage(inputCollection);
-		verify(timeUnit, times(4)).sleep(1);
-	}
+
 
 
 }
