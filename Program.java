@@ -23,12 +23,7 @@ public class Program {
 		SlotMachine slotMachine = new SlotMachine(1,3,10,reels);
 		IView view = new EnglishView(System.out, new BufferedReader(new InputStreamReader(System.in)));
 		PlayGame playGame = new PlayGame();
-		try {
-			playGame.play(slotMachine, view);
-		} catch (IOException e) {
-			System.out.println("An IOException has been thrown:");
-			e.printStackTrace();
-		}
+		playGame.play(slotMachine, view);
 	}
 
 }
