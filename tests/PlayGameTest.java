@@ -40,23 +40,25 @@ public class PlayGameTest {
 	}
 	
 	@Test
-	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_IfGameOverIsTrue() {
+	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayGameOverMessage_IfGameOverIsTrue() {
 		when(slotMachine.isGameOver()).thenReturn(true);
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
 		verify(view, never()).displayCredit(10);
+		verify(view).displayGameOverMessage();
 	}
 	
 	@Test
-	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_IfWantsToQuitIsTrue() {
+	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayQuitMessage_IfWantsToQuitIsTrue() {
 		when(slotMachine.isGameOver()).thenReturn(true);
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
 		verify(view, never()).displayCredit(10);
+		verify(view).displayQuitMessage();
 	}
 	
 	
