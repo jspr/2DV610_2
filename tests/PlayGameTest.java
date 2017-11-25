@@ -30,9 +30,11 @@ public class PlayGameTest {
 
 	
 	@Test
-	public void shouldDisplayWelcomeMessage() {
+	public void shouldDisplayWelcomeMessageAndCredit() {
+		when(slotMachine.getCredit()).thenReturn(10);
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
+		verify(view).displayCredit(10);
 	}
 	
 	
