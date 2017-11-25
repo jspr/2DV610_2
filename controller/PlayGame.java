@@ -7,6 +7,7 @@ public class PlayGame {
 	
 	public void play(SlotMachine slotMachine, IView view) {
 		view.displayWelcomeMessage();
+		view.displayCredit(slotMachine.getCredit());
 
 	}
 
