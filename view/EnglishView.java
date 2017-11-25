@@ -24,7 +24,7 @@ public class EnglishView implements IView{
 	private final String SPIN_COMMAND = "S";
 	private final String QUIT_COMMAND = "Q";
 	
-	public EnglishView(PrintStream printStream, BufferedReader bufferedReader) {
+	public EnglishView(PrintStream printStream, BufferedReader bufferedReader, TimeUnit timeUnit) {
 		this.printStream = printStream;
 		this.bufferedReader = bufferedReader;
 	}

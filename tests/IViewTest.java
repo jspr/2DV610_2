@@ -12,6 +12,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -30,6 +31,7 @@ public class IViewTest {
 	private IView sut;
 	private static PrintStream printStream = mock(PrintStream.class);
 	private static BufferedReader bufferedReader = mock(BufferedReader.class);
+	private static TimeUnit timeUnit = mock(TimeUnit.class);
 	
 	public IViewTest(IView iView) {
         this.sut = iView;
@@ -39,7 +41,7 @@ public class IViewTest {
     public static Collection<Object[]> data() {
     	
     	Object col[][] = new Object[][] {
-    		new Object[]{new EnglishView(printStream, bufferedReader)}
+    		new Object[]{new EnglishView(printStream, bufferedReader, timeUnit)}
     	};
     	
     	return Arrays.asList(col);
@@ -180,7 +182,7 @@ public class IViewTest {
 		Collection<String> returnedCollection = sut.getReelMessages(inputCollection);
 		sut.displayReelMessage(inputCollection);
 		for(String string : returnedCollection) {
-			verify(printStream).println(string);
+			verify(printStream, times(2)).println(string);
 		}
 	}
 	
@@ -194,6 +196,16 @@ public class IViewTest {
 	public void shouldDisplayLoseMessage() {
 		sut.displayLoseMessage();
 		verify(printStream).println(sut.getLoseMessage());
+	}
+	
+	@Test
+	public void shouldPauseWhenDisplayingReels() throws InterruptedException {
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("BAR");
+		inputCollection.add("FOO");
+		inputCollection.add("001");	
+		sut.displayReelMessage(inputCollection);
+		verify(timeUnit, times(4)).sleep(1);
 	}
 
 
