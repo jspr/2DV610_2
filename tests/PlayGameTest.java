@@ -69,12 +69,12 @@ public class PlayGameTest {
 		when(slotMachine.isGameOver()).thenReturn(false);
 		when(view.wantsToQuit()).thenReturn(false,true); //the second argument represents the user input
 		when(slotMachine.getCredit()).thenReturn(10);
-		sut.play(slotMachine, view);
-		verify(view).displayWelcomeMessage();
-		verify(view).displayCredit(10);
 		when(view.collectValidCommand()).thenReturn(true);
 		when(slotMachine.getMinBet()).thenReturn(1);
 		when(slotMachine.getMaxBet()).thenReturn(3);
+		sut.play(slotMachine, view);
+		verify(view).displayWelcomeMessage();
+		verify(view).displayCredit(10);
 		verify(view, never()).displayBettingMessage(1,3);
 	}
 	

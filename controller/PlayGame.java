@@ -14,11 +14,13 @@ public class PlayGame {
 			do {
 				view.displayInstructions();
 			}while(!view.collectValidCommand());
-			do {
-				view.displayBettingMessage(slotMachine.getMinBet(),slotMachine.getMaxBet());
-			}while(!view.collectValidBet(slotMachine.getMinBet(),slotMachine.getMaxBet()));
-			slotMachine.spin(view.getBet());
-			view.displayReelMessage(slotMachine.getSymbols());
+			if(!view.wantsToQuit()) {
+				do {
+					view.displayBettingMessage(slotMachine.getMinBet(),slotMachine.getMaxBet());
+				}while(!view.collectValidBet(slotMachine.getMinBet(),slotMachine.getMaxBet()));
+				slotMachine.spin(view.getBet());
+				view.displayReelMessage(slotMachine.getSymbols());
+			}
 		}
 		if(slotMachine.isGameOver())
 			view.displayGameOverMessage();
