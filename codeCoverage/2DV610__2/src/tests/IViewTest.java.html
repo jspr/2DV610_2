@@ -1,11 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>IViewTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Merged (2017-nov-19 14:32:17)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">tests</a> &gt; <span class="el_source">IViewTest.java</span></div><h1>IViewTest.java</h1><pre class="source lang-java linenums">package tests;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>IViewTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">tests (1) (2017-nov-26 19:36:14)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">tests</a> &gt; <span class="el_source">IViewTest.java</span></div><h1>IViewTest.java</h1><pre class="source lang-java linenums">package tests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 import org.junit.runners.Parameterized;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,6 +21,7 @@ import org.junit.runner.RunWith;
 
 import view.EnglishView;
 import view.IView;
+import view.SwedishView;
 
 @RunWith(Parameterized.class)
 public class IViewTest {
@@ -22,47 +30,233 @@ public class IViewTest {
 // http://junit.sourceforge.net/javadoc/org/junit/runners/Parameterized.html
 	
 	private IView sut;
-<span class="fc" id="L25">	private static PrintStream printStream = mock(PrintStream.class);</span>
+<span class="fc" id="L33">	private static PrintStream printStream = mock(PrintStream.class);</span>
+<span class="fc" id="L34">	private static BufferedReader bufferedReader = mock(BufferedReader.class);</span>
+<span class="fc" id="L35">	private static TimeUnit timeUnit = mock(TimeUnit.class);</span>
 	
-<span class="fc" id="L27">	public IViewTest(IView iView) {</span>
-<span class="fc" id="L28">        this.sut = iView;</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L37">	public IViewTest(IView iView) {</span>
+<span class="fc" id="L38">        this.sut = iView;</span>
+<span class="fc" id="L39">    }</span>
 	
     @Parameterized.Parameters
     public static Collection&lt;Object[]&gt; data() {
     	
-<span class="fc" id="L34">    	Object col[][] = new Object[][] {</span>
-<span class="fc" id="L35">    		new Object[]{new EnglishView(printStream)}</span>
+<span class="fc" id="L44">    	Object col[][] = new Object[][] {</span>
+<span class="fc" id="L45">    		new Object[]{new EnglishView(printStream, bufferedReader, timeUnit)},</span>
+<span class="fc" id="L46">    		new Object[]{new SwedishView(printStream, bufferedReader, timeUnit)}</span>
     	};
     	
-<span class="fc" id="L38">    	return Arrays.asList(col);</span>
+<span class="fc" id="L49">    	return Arrays.asList(col);</span>
     }
 
 	@Before
 	public void setUp() throws Exception {
-<span class="fc" id="L43">	}</span>
+<span class="fc" id="L54">	}</span>
 
 	@After
 	public void tearDown() throws Exception {
-<span class="fc" id="L47">	}</span>
+<span class="fc" id="L58">	}</span>
 
 	@Test
 	public void shouldDisplayWelcomeMessage() {
-<span class="fc" id="L51">		sut.displayWelcomeMessage();</span>
-<span class="fc" id="L52">		verify(printStream).println(sut.getWelcomeMessage());</span>
-<span class="fc" id="L53">	}</span>
+<span class="fc" id="L62">		sut.displayWelcomeMessage();</span>
+<span class="fc" id="L63">		verify(printStream).println(sut.getWelcomeMessage());</span>
+<span class="fc" id="L64">	}</span>
 	
 	@Test
 	public void shouldDisplayInstructions() {
-<span class="fc" id="L57">		sut.displayInstructions();</span>
-<span class="fc" id="L58">		verify(printStream).println(sut.getInstructions());</span>
-<span class="fc" id="L59">	}</span>
+<span class="fc" id="L68">		sut.displayInstructions();</span>
+<span class="fc" id="L69">		verify(printStream).printf(sut.getInstructions(),sut.getSpinCommand(),sut.getQuitCommand());</span>
+<span class="fc" id="L70">	}</span>
 	
 	@Test
 	public void shouldDisplayQuitMessage() {
-<span class="fc" id="L63">		sut.displayQuitMessage();</span>
-<span class="fc" id="L64">		verify(printStream).println(sut.getQuitMessage());</span>
-<span class="fc" id="L65">	}</span>
+<span class="fc" id="L74">		sut.displayQuitMessage();</span>
+<span class="fc" id="L75">		verify(printStream).println(sut.getQuitMessage());</span>
+<span class="fc" id="L76">	}</span>
+	
+	@Test
+	public void shouldDisplayBettingMessageMin1Max3() {
+<span class="fc" id="L80">		sut.displayBettingMessage(1, 3);</span>
+<span class="fc" id="L81">		verify(printStream).printf(sut.getBettingMessage(),1,3);</span>
+<span class="fc" id="L82">	}</span>
+	
+	@Test
+	public void shouldReturnFalseWantsToQuitOnInputSpinCharacter() throws IOException {
+<span class="fc" id="L86">		when(bufferedReader.readLine()).thenReturn(sut.getSpinCommand());</span>
+<span class="fc" id="L87">		sut.collectValidCommand();</span>
+<span class="fc" id="L88">		assertFalse(sut.wantsToQuit());</span>
+<span class="fc" id="L89">	}</span>
+	
+	@Test
+	public void shouldReturnTrueWantsToQuitOnInputQuitCharacter() throws IOException {
+<span class="fc" id="L93">		when(bufferedReader.readLine()).thenReturn(sut.getQuitCommand());</span>
+<span class="fc" id="L94">		sut.collectValidCommand();</span>
+<span class="fc" id="L95">		assertTrue(sut.wantsToQuit());</span>
+<span class="fc" id="L96">	}</span>
+	
+	@Test
+	public void shouldReturnFalseWantsToQuitOnInputOtherCharacter() throws IOException {
+<span class="fc" id="L100">		when(bufferedReader.readLine()).thenReturn(&quot;Z&quot;);</span>
+<span class="fc" id="L101">		sut.collectValidCommand();</span>
+<span class="fc" id="L102">		assertFalse(sut.wantsToQuit());</span>
+<span class="fc" id="L103">	}</span>
+	
+	@Test
+	public void shouldReturnTrueCollectValidCommandOnInputSpinCharacter() throws IOException {
+<span class="fc" id="L107">		when(bufferedReader.readLine()).thenReturn(sut.getSpinCommand());</span>
+<span class="fc" id="L108">		assertTrue(sut.collectValidCommand());</span>
+<span class="fc" id="L109">	}</span>
+	
+	@Test
+	public void shouldReturnTrueCollectValidCommandOnInputQuitCharacter() throws IOException {
+<span class="fc" id="L113">		when(bufferedReader.readLine()).thenReturn(sut.getQuitCommand());</span>
+<span class="fc" id="L114">		assertTrue(sut.collectValidCommand());</span>
+<span class="fc" id="L115">	}</span>
+	
+	@Test
+	public void shouldReturnFalseCollectValidCommandOnInvalidCharacter() throws IOException {
+<span class="fc" id="L119">		when(bufferedReader.readLine()).thenReturn(&quot;Z&quot;);</span>
+<span class="fc" id="L120">		assertFalse(sut.collectValidCommand());</span>
+<span class="fc" id="L121">	}</span>
+	
+	@Test
+	public void shouldDisplayCredit() {
+<span class="fc" id="L125">		sut.displayCredit(1);</span>
+<span class="fc" id="L126">		verify(printStream).println(sut.getCreditMessage(1));</span>
+<span class="fc" id="L127">		sut.displayCredit(10);</span>
+<span class="fc" id="L128">		verify(printStream).println(sut.getCreditMessage(10));</span>
+<span class="fc" id="L129">	}</span>
+	
+	@Test
+	public void shouldDisplayGameOverMessage() {
+<span class="fc" id="L133">		sut.displayGameOverMessage();</span>
+<span class="fc" id="L134">		verify(printStream).println(sut.getGameOverMessage());</span>
+<span class="fc" id="L135">	}</span>
+	
+	@Test
+	public void shouldReturnCollectionStringForPrintoutFor1ReelBAR() {
+<span class="fc" id="L139">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L140">		inputCollection.add(&quot;BAR&quot;);</span>
+<span class="fc" id="L141">		String expected = System.lineSeparator() +</span>
+<span class="fc" id="L142">				&quot;  #########  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L143">				&quot;  #       #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L144">				&quot;  #  BAR  #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L145">				&quot;  #       #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L146">				&quot;  #########  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L147">				System.lineSeparator();</span>
+<span class="fc" id="L148">		Collection&lt;String&gt; returnedCollection = sut.getReelMessages(inputCollection);</span>
+<span class="fc" id="L149">		assertEquals(returnedCollection.size(),1);</span>
+<span class="fc" id="L150">		assertEquals(expected,returnedCollection.toArray()[0]);</span>
+<span class="fc" id="L151">	}</span>
+	
+	@Test
+	public void shouldReturnCollectionStringForPrintoutFor2ReelsBAR_FOO() {
+<span class="fc" id="L155">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L156">		inputCollection.add(&quot;BAR&quot;);</span>
+<span class="fc" id="L157">		inputCollection.add(&quot;FOO&quot;);</span>
+<span class="fc" id="L158">		String expected1 = System.lineSeparator() +</span>
+<span class="fc" id="L159">				&quot;  #########  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L160">				&quot;  #       #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L161">				&quot;  #  BAR  #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L162">				&quot;  #       #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L163">				&quot;  #########  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L164">				System.lineSeparator();</span>
+<span class="fc" id="L165">		String expected2 = System.lineSeparator() +</span>
+<span class="fc" id="L166">				&quot;  #########    #########  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L167">				&quot;  #       #    #       #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L168">				&quot;  #  BAR  #    #  FOO  #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L169">				&quot;  #       #    #       #  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L170">				&quot;  #########    #########  &quot; + System.lineSeparator() +</span>
+<span class="fc" id="L171">				System.lineSeparator();</span>
+<span class="fc" id="L172">		Collection&lt;String&gt; returnedCollection = sut.getReelMessages(inputCollection);</span>
+<span class="fc" id="L173">		assertEquals(returnedCollection.size(),2);</span>
+<span class="fc" id="L174">		assertEquals(expected1,returnedCollection.toArray()[0]);</span>
+<span class="fc" id="L175">		assertEquals(expected2,returnedCollection.toArray()[1]);</span>
+<span class="fc" id="L176">	}</span>
+	
+	@Test
+	public void shouldDisplayReelMessage() throws InterruptedException {
+<span class="fc" id="L180">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L181">		inputCollection.add(&quot;BAR&quot;);</span>
+<span class="fc" id="L182">		inputCollection.add(&quot;FOO&quot;);</span>
+<span class="fc" id="L183">		inputCollection.add(&quot;001&quot;);	</span>
+<span class="fc" id="L184">		Collection&lt;String&gt; returnedCollection = sut.getReelMessages(inputCollection);</span>
+<span class="fc" id="L185">		sut.displayReelMessage(inputCollection);</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">		for(String string : returnedCollection) {</span>
+<span class="fc" id="L187">			verify(printStream, atLeast(2)).println(string);</span>
+		}
+<span class="fc" id="L189">	}</span>
+	
+	@Test
+	public void shouldPauseWhenDisplayingReels() throws InterruptedException {
+<span class="fc" id="L193">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L194">		inputCollection.add(&quot;BAR&quot;);</span>
+<span class="fc" id="L195">		inputCollection.add(&quot;FOO&quot;);</span>
+<span class="fc" id="L196">		inputCollection.add(&quot;001&quot;);	</span>
+<span class="fc" id="L197">		sut.displayReelMessage(inputCollection);</span>
+<span class="fc" id="L198">		verify(timeUnit, atLeast(4)).sleep(1);</span>
+<span class="fc" id="L199">	}</span>
+	
+	@Test
+	public void shouldDisplayWinMessage5Credits() {
+<span class="fc" id="L203">		sut.displayWinMessage(5);</span>
+<span class="fc" id="L204">		verify(printStream).printf(sut.getWinMessage() + System.lineSeparator(), 5);</span>
+<span class="fc" id="L205">	}</span>
+	
+	@Test
+	public void shouldDisplayLoseMessage() {
+<span class="fc" id="L209">		sut.displayLoseMessage();</span>
+<span class="fc" id="L210">		verify(printStream).println(sut.getLoseMessage());</span>
+<span class="fc" id="L211">	}</span>
+	
+	
+	@Test
+	public void shouldReturnFalseCollectValidBetOnInputX() throws IOException {
+<span class="fc" id="L216">		when(bufferedReader.readLine()).thenReturn(&quot;X&quot;);</span>
+<span class="fc" id="L217">		assertFalse(sut.collectValidBet(1,3));</span>
+<span class="fc" id="L218">	}</span>
+	
+	@Test
+	public void shouldReturnFalseCollectValidBetOnInput0() throws IOException {
+<span class="fc" id="L222">		when(bufferedReader.readLine()).thenReturn(&quot;0&quot;);</span>
+<span class="fc" id="L223">		assertFalse(sut.collectValidBet(1,3));</span>
+<span class="fc" id="L224">	}</span>
+	
+	@Test
+	public void shouldReturnFalseCollectValidBetOnInput10() throws IOException {
+<span class="fc" id="L228">		when(bufferedReader.readLine()).thenReturn(&quot;10&quot;);</span>
+<span class="fc" id="L229">		assertFalse(sut.collectValidBet(1,3));</span>
+<span class="fc" id="L230">	}</span>
+	
+	@Test
+	public void shouldReturnTrueCollectValidBetOnInput1() throws IOException {
+<span class="fc" id="L234">		when(bufferedReader.readLine()).thenReturn(&quot;1&quot;);</span>
+<span class="fc" id="L235">		assertTrue(sut.collectValidBet(1,3));</span>
+<span class="fc" id="L236">	}</span>
+	
+	@Test
+	public void shouldReturnTrueCollectValidBetOnInput3() throws IOException {
+<span class="fc" id="L240">		when(bufferedReader.readLine()).thenReturn(&quot;3&quot;);</span>
+<span class="fc" id="L241">		assertTrue(sut.collectValidBet(1,3));</span>
+<span class="fc" id="L242">	}</span>
+
+	@Test
+	public void shouldReturnGetBet1() throws IOException {
+<span class="fc" id="L246">		int expected = 1;</span>
+<span class="fc" id="L247">		when(bufferedReader.readLine()).thenReturn(&quot;1&quot;);</span>
+<span class="fc" id="L248">		sut.collectValidBet(1,3);</span>
+<span class="fc" id="L249">		assertEquals(expected,sut.getBet());</span>
+<span class="fc" id="L250">	}</span>
+	
+	@Test
+	public void shouldReturnGetBet3() throws IOException {
+<span class="fc" id="L254">		int expected = 3;</span>
+<span class="fc" id="L255">		when(bufferedReader.readLine()).thenReturn(&quot;3&quot;);</span>
+<span class="fc" id="L256">		sut.collectValidBet(1,3);</span>
+<span class="fc" id="L257">		assertEquals(expected,sut.getBet());</span>
+<span class="fc" id="L258">	}</span>
+	
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>Merged (2017-nov-19 14:32:17)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>tests (1) (2017-nov-26 19:36:14)</div></body></html>

@@ -1,15 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Program.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Merged (2017-nov-19 14:32:17)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Program.java</span></div><h1>Program.java</h1><pre class="source lang-java linenums">import controller.PlayGame;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Program.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">tests (1) (2017-nov-26 19:36:14)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Program.java</span></div><h1>Program.java</h1><pre class="source lang-java linenums">import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
+import controller.PlayGame;
+import model.Reel;
 import model.SlotMachine;
 import view.EnglishView;
 import view.IView;
 
-<span class="nc" id="L6">public class Program {</span>
+<span class="nc" id="L16">public class Program {</span>
 
 	public static void main(String[] args) {
-<span class="nc" id="L9">		SlotMachine slotMachine = new SlotMachine();</span>
-<span class="nc" id="L10">		IView view = new EnglishView(System.out);</span>
-<span class="nc" id="L11">		PlayGame playGame = new PlayGame();</span>
-<span class="nc" id="L12">	}</span>
+<span class="nc" id="L19">		Collection&lt;Reel&gt; reels = new ArrayList&lt;Reel&gt;();</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">		for(int i=0; i&lt;3; i++) {</span>
+<span class="nc" id="L21">			Random random = new SecureRandom();</span>
+<span class="nc" id="L22">			reels.add(new Reel(random));</span>
+		}
+<span class="nc" id="L24">		SlotMachine slotMachine = new SlotMachine(1,3,10,reels);</span>
+<span class="nc" id="L25">		IView view = new EnglishView(System.out, new BufferedReader(new InputStreamReader(System.in)), TimeUnit.SECONDS);</span>
+<span class="nc" id="L26">		PlayGame playGame = new PlayGame();</span>
+		try {
+<span class="nc" id="L28">			playGame.play(slotMachine, view);</span>
+<span class="nc" id="L29">		} catch (IOException e) {</span>
+<span class="nc" id="L30">			System.out.println(&quot;An IOException has been thrown:&quot;);</span>
+<span class="nc" id="L31">			e.printStackTrace();</span>
+<span class="nc" id="L32">		}catch (InterruptedException e) {</span>
+<span class="nc" id="L33">			System.out.println(&quot;An InterruptedException has been thrown:&quot;);</span>
+<span class="nc" id="L34">			e.printStackTrace();</span>
+		}
+<span class="nc" id="L36">	}</span>
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>Merged (2017-nov-19 14:32:17)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>tests (1) (2017-nov-26 19:36:14)</div></body></html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>EnglishView.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">tests (1) (2017-nov-26 19:36:14)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">view</a> &gt; <span class="el_source">EnglishView.java</span></div><h1>EnglishView.java</h1><pre class="source lang-java linenums">package view;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>SwedishView.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">tests (1) (2017-nov-26 19:36:14)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">view</a> &gt; <span class="el_source">SwedishView.java</span></div><h1>SwedishView.java</h1><pre class="source lang-java linenums">package view;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
-public class EnglishView implements IView{
+public class SwedishView implements IView{
 
 	private PrintStream printStream;
 	private BufferedReader bufferedReader;
@@ -16,18 +16,18 @@ public class EnglishView implements IView{
 <span class="fc" id="L16">	private int bet = -1;</span>
 	
 	
-<span class="fc" id="L19">	private final String WELCOME_MESSAGE = &quot;Welcome to try your luck on the Slot Machine!&quot;;</span>
-<span class="fc" id="L20">	private final String INSTRUCTIONS = &quot;Enter '%s' to spin or '%s' to quit: &quot;;</span>
-<span class="fc" id="L21">	private final String QUIT_MESSAGE = &quot;Thank you for playing! Bye for now.&quot;;</span>
-<span class="fc" id="L22">	private final String BETTING_MESSAGE = &quot;Enter amount to bet (min: %s, max: %s): &quot;;</span>
-<span class="fc" id="L23">	private final String GAME_OVER_MESSAGE = &quot;GAME OVER! All your credits are belong to us!&quot;;</span>
-<span class="fc" id="L24">	private final String LOSE_MESSAGE = &quot;No luck this time.&quot;;</span>
-<span class="fc" id="L25">	private final String WIN_MESSAGE = &quot;Congratulations! You won: %s credit(s).&quot;;</span>
-<span class="fc" id="L26">	private final String CREDIT = &quot;CREDIT:&quot;;</span>
+<span class="fc" id="L19">	private final String WELCOME_MESSAGE = &quot;Testa lyckan på den enarmade banditen!&quot;;</span>
+<span class="fc" id="L20">	private final String INSTRUCTIONS = &quot;Ange '%s' för att spela eller '%s' för att avsluta: &quot;;</span>
+<span class="fc" id="L21">	private final String QUIT_MESSAGE = &quot;Tack för den här gången och välkommen åter.&quot;;</span>
+<span class="fc" id="L22">	private final String BETTING_MESSAGE = &quot;Hur mycket vill du satsa (min: %s, max: %s): &quot;;</span>
+<span class="fc" id="L23">	private final String GAME_OVER_MESSAGE = &quot;GAME OVER! Alla dina krediter är tillhör till oss!&quot;;</span>
+<span class="fc" id="L24">	private final String LOSE_MESSAGE = &quot;Ledsen, inget den här gången.&quot;;</span>
+<span class="fc" id="L25">	private final String WIN_MESSAGE = &quot;Grattis! Du vann: %s krediter.&quot;;</span>
+<span class="fc" id="L26">	private final String CREDIT = &quot;KREDITER:&quot;;</span>
 <span class="fc" id="L27">	private final String SPIN_COMMAND = &quot;S&quot;;</span>
-<span class="fc" id="L28">	private final String QUIT_COMMAND = &quot;Q&quot;;</span>
+<span class="fc" id="L28">	private final String QUIT_COMMAND = &quot;A&quot;;</span>
 	
-<span class="fc" id="L30">	public EnglishView(PrintStream printStream, BufferedReader bufferedReader, TimeUnit timeUnit) {</span>
+<span class="fc" id="L30">	public SwedishView(PrintStream printStream, BufferedReader bufferedReader, TimeUnit timeUnit) {</span>
 <span class="fc" id="L31">		this.printStream = printStream;</span>
 <span class="fc" id="L32">		this.bufferedReader = bufferedReader;</span>
 <span class="fc" id="L33">		this.timeUnit = timeUnit;</span>

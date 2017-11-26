@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>PlayGameTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Merged (2017-nov-19 14:32:17)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">tests</a> &gt; <span class="el_source">PlayGameTest.java</span></div><h1>PlayGameTest.java</h1><pre class="source lang-java linenums">package tests;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>PlayGameTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">tests (1) (2017-nov-26 19:36:14)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">tests</a> &gt; <span class="el_source">PlayGameTest.java</span></div><h1>PlayGameTest.java</h1><pre class="source lang-java linenums">package tests;
 
 import static org.mockito.Mockito.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,56 +12,200 @@ import org.junit.Test;
 
 import controller.PlayGame;
 import model.SlotMachine;
-import view.EnglishView;
 import view.IView;
 
 
-<span class="fc" id="L15">public class PlayGameTest {</span>
+<span class="fc" id="L18">public class PlayGameTest {</span>
 	
 	private PlayGame sut;
 	IView view;
 	SlotMachine slotMachine;
 
 	@Before
-	public void setUp() throws Exception {
-<span class="fc" id="L23">		sut = new PlayGame();</span>
-<span class="fc" id="L24">		view = mock(EnglishView.class);</span>
-<span class="fc" id="L25">		slotMachine = new SlotMachine();</span>
-<span class="fc" id="L26">	}</span>
+	public void setUp() {
+<span class="fc" id="L26">		sut = new PlayGame();</span>
+<span class="fc" id="L27">		view = mock(IView.class);</span>
+<span class="fc" id="L28">		slotMachine = mock(SlotMachine.class);</span>
+<span class="fc" id="L29">	}</span>
 
 	@After
-	public void tearDown() throws Exception {
-<span class="fc" id="L30">	}</span>
+	public void tearDown() {
+<span class="fc" id="L33">	}</span>
 
-	@Test
-	public void shouldDisplayWelcomeMessage() {
-<span class="fc" id="L34">		sut.play(slotMachine, view);</span>
-<span class="fc" id="L35">		verify(view).displayWelcomeMessage();</span>
-<span class="fc" id="L36">	}</span>
 	
 	@Test
-	public void shouldDisplayInstructions() {
-<span class="fc" id="L40">		sut.play(slotMachine, view);</span>
-<span class="fc" id="L41">		verify(view).displayInstructions();</span>
-<span class="fc" id="L42">	}</span>
+	public void shouldDisplayWelcomeMessageAndCredit_IfGameOverAndWantsToQitIsFalse() throws IOException, InterruptedException {
+<span class="fc" id="L38">		when(slotMachine.isGameOver()).thenReturn(false,true); //otherwise we'll get stuck in a loop ad infinitum</span>
+<span class="fc" id="L39">		when(view.wantsToQuit()).thenReturn(false,true);</span>
+<span class="fc" id="L40">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L41">		when(view.collectValidCommand()).thenReturn(true);</span>
+<span class="fc" id="L42">		when(slotMachine.getMinBet()).thenReturn(1);</span>
+<span class="fc" id="L43">		when(slotMachine.getMaxBet()).thenReturn(3);</span>
+<span class="fc" id="L44">		when(view.collectValidBet(1,3)).thenReturn(true);</span>
+<span class="fc" id="L45">		when(view.getBet()).thenReturn(2);</span>
+<span class="fc" id="L46">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L47">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L48">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L49">		inputCollection.add(&quot;010&quot;);	</span>
+<span class="fc" id="L50">		when(slotMachine.getSymbols()).thenReturn(inputCollection);</span>
+<span class="fc" id="L51">		sut.play(slotMachine, view);</span>
+<span class="fc" id="L52">		verify(view).displayWelcomeMessage();</span>
+<span class="fc" id="L53">		verify(view).displayCredit(10);</span>
+<span class="fc" id="L54">	}</span>
 	
 	@Test
-	public void shouldDisplayWelcomeMessageInstructionsAndQuit() {
-<span class="fc" id="L46">		when(view.wantsToQuit()).thenReturn(true);</span>
-<span class="fc" id="L47">		sut.play(slotMachine, view);		</span>
-<span class="fc" id="L48">		verify(view).displayWelcomeMessage();</span>
-<span class="fc" id="L49">		verify(view).displayInstructions();</span>
-<span class="fc" id="L50">		verify(view).displayQuitMessage();</span>
-<span class="fc" id="L51">	}</span>
+	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayGameOverMessage_IfGameOverIsTrue() throws IOException, InterruptedException {
+<span class="fc" id="L58">		when(slotMachine.isGameOver()).thenReturn(true);</span>
+<span class="fc" id="L59">		when(view.wantsToQuit()).thenReturn(false);</span>
+<span class="fc" id="L60">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L61">		sut.play(slotMachine, view);</span>
+<span class="fc" id="L62">		verify(view).displayWelcomeMessage();</span>
+<span class="fc" id="L63">		verify(view, never()).displayCredit(10);</span>
+<span class="fc" id="L64">		verify(view).displayGameOverMessage();</span>
+<span class="fc" id="L65">	}</span>
 	
 	@Test
-	public void shouldDisplayWelcomeMessageAndInstructionsNotQuit() {
-<span class="fc" id="L55">		when(view.wantsToQuit()).thenReturn(false);</span>
-<span class="fc" id="L56">		sut.play(slotMachine, view);		</span>
-<span class="fc" id="L57">		verify(view).displayWelcomeMessage();</span>
-<span class="fc" id="L58">		verify(view).displayInstructions();</span>
-<span class="fc" id="L59">		verify(view, never()).displayQuitMessage();</span>
-<span class="fc" id="L60">	}</span>
-
+	public void shouldDisplayWelcomeMessage_ShouldDisplayCredit_ShouldNotDisplayBettingMessage_IfUserInputWantsToQuit() throws IOException, InterruptedException {
+<span class="fc" id="L69">		when(slotMachine.isGameOver()).thenReturn(false);</span>
+<span class="fc" id="L70">		when(view.wantsToQuit()).thenReturn(false,true); //the second argument represents the user input</span>
+<span class="fc" id="L71">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L72">		when(view.collectValidCommand()).thenReturn(true);</span>
+<span class="fc" id="L73">		when(slotMachine.getMinBet()).thenReturn(1);</span>
+<span class="fc" id="L74">		when(slotMachine.getMaxBet()).thenReturn(3);</span>
+<span class="fc" id="L75">		sut.play(slotMachine, view);</span>
+<span class="fc" id="L76">		verify(view).displayWelcomeMessage();</span>
+<span class="fc" id="L77">		verify(view).displayCredit(10);</span>
+<span class="fc" id="L78">		verify(view, never()).displayBettingMessage(1,3);</span>
+<span class="fc" id="L79">	}</span>
+	
+	@Test
+	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayQuitMessage_IfWantsToQuitIsTrue() throws IOException, InterruptedException {
+<span class="fc" id="L83">		when(slotMachine.isGameOver()).thenReturn(false);</span>
+<span class="fc" id="L84">		when(view.wantsToQuit()).thenReturn(true);</span>
+<span class="fc" id="L85">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L86">		sut.play(slotMachine, view);</span>
+<span class="fc" id="L87">		verify(view).displayWelcomeMessage();</span>
+<span class="fc" id="L88">		verify(view, never()).displayCredit(10);</span>
+<span class="fc" id="L89">		verify(view).displayQuitMessage();</span>
+<span class="fc" id="L90">	}</span>
+	
+	@Test
+	public void shouldDisplayInstructionsAgainWhenInvalidCommand() throws IOException, InterruptedException {
+<span class="fc" id="L94">		when(slotMachine.isGameOver()).thenReturn(false,true);</span>
+<span class="fc" id="L95">		when(view.wantsToQuit()).thenReturn(false);</span>
+<span class="fc" id="L96">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L97">		when(view.collectValidCommand()).thenReturn(false,false,false,true);</span>
+<span class="fc" id="L98">		when(slotMachine.getMinBet()).thenReturn(1);</span>
+<span class="fc" id="L99">		when(slotMachine.getMaxBet()).thenReturn(3);</span>
+<span class="fc" id="L100">		when(view.collectValidBet(1,3)).thenReturn(true);</span>
+<span class="fc" id="L101">		when(view.getBet()).thenReturn(2);</span>
+<span class="fc" id="L102">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L103">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L104">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L105">		inputCollection.add(&quot;010&quot;);	</span>
+<span class="fc" id="L106">		when(slotMachine.getSymbols()).thenReturn(inputCollection);</span>
+<span class="fc" id="L107">		sut.play(slotMachine, view);		</span>
+<span class="fc" id="L108">		verify(view, times(4)).displayInstructions();</span>
+<span class="fc" id="L109">	}</span>
+	
+	@Test
+	public void shouldDisplayBettingMessageAgainWhenInvalidCommand() throws IOException, InterruptedException {
+<span class="fc" id="L113">		when(slotMachine.isGameOver()).thenReturn(false,true);</span>
+<span class="fc" id="L114">		when(view.wantsToQuit()).thenReturn(false);</span>
+<span class="fc" id="L115">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L116">		when(view.collectValidCommand()).thenReturn(true);</span>
+<span class="fc" id="L117">		when(slotMachine.getMinBet()).thenReturn(1);</span>
+<span class="fc" id="L118">		when(slotMachine.getMaxBet()).thenReturn(3);</span>
+<span class="fc" id="L119">		when(view.collectValidBet(1,3)).thenReturn(false,false,false,true);</span>
+<span class="fc" id="L120">		when(view.getBet()).thenReturn(2);</span>
+<span class="fc" id="L121">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L122">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L123">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L124">		inputCollection.add(&quot;010&quot;);	</span>
+<span class="fc" id="L125">		when(slotMachine.getSymbols()).thenReturn(inputCollection);</span>
+<span class="fc" id="L126">		sut.play(slotMachine, view);		</span>
+<span class="fc" id="L127">		verify(view, times(4)).collectValidBet(1,3);</span>
+<span class="fc" id="L128">	}</span>
+	
+	@Test
+	public void shouldCallSpinOnSlotMachine() throws IOException, InterruptedException {
+<span class="fc" id="L132">		when(slotMachine.isGameOver()).thenReturn(false,true);</span>
+<span class="fc" id="L133">		when(view.wantsToQuit()).thenReturn(false);</span>
+<span class="fc" id="L134">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L135">		when(view.collectValidCommand()).thenReturn(true);</span>
+<span class="fc" id="L136">		when(slotMachine.getMinBet()).thenReturn(1);</span>
+<span class="fc" id="L137">		when(slotMachine.getMaxBet()).thenReturn(3);</span>
+<span class="fc" id="L138">		when(view.collectValidBet(1,3)).thenReturn(true);</span>
+<span class="fc" id="L139">		when(view.getBet()).thenReturn(2);</span>
+<span class="fc" id="L140">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L141">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L142">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L143">		inputCollection.add(&quot;010&quot;);	</span>
+<span class="fc" id="L144">		when(slotMachine.getSymbols()).thenReturn(inputCollection);</span>
+<span class="fc" id="L145">		sut.play(slotMachine, view);		</span>
+<span class="fc" id="L146">		verify(slotMachine).spin(2);</span>
+<span class="fc" id="L147">	}</span>
+	
+	@Test
+	public void shouldDisplayReelMessage() throws IOException, InterruptedException {
+<span class="fc" id="L151">		when(slotMachine.isGameOver()).thenReturn(false,true);</span>
+<span class="fc" id="L152">		when(view.wantsToQuit()).thenReturn(false);</span>
+<span class="fc" id="L153">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L154">		when(view.collectValidCommand()).thenReturn(true);</span>
+<span class="fc" id="L155">		when(slotMachine.getMinBet()).thenReturn(1);</span>
+<span class="fc" id="L156">		when(slotMachine.getMaxBet()).thenReturn(3);</span>
+<span class="fc" id="L157">		when(view.collectValidBet(1,3)).thenReturn(true);</span>
+<span class="fc" id="L158">		when(view.getBet()).thenReturn(2);</span>
+<span class="fc" id="L159">		when(slotMachine.spin(2)).thenReturn(2);</span>
+<span class="fc" id="L160">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L161">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L162">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L163">		inputCollection.add(&quot;010&quot;);	</span>
+<span class="fc" id="L164">		when(slotMachine.getSymbols()).thenReturn(inputCollection);</span>
+<span class="fc" id="L165">		sut.play(slotMachine, view);		</span>
+<span class="fc" id="L166">		verify(view).displayReelMessage(inputCollection);</span>
+<span class="fc" id="L167">	}</span>
+	
+	@Test
+	public void shouldDisplayWinMessage() throws IOException, InterruptedException {
+<span class="fc" id="L171">		when(slotMachine.isGameOver()).thenReturn(false,true);</span>
+<span class="fc" id="L172">		when(view.wantsToQuit()).thenReturn(false);</span>
+<span class="fc" id="L173">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L174">		when(view.collectValidCommand()).thenReturn(true);</span>
+<span class="fc" id="L175">		when(slotMachine.getMinBet()).thenReturn(1);</span>
+<span class="fc" id="L176">		when(slotMachine.getMaxBet()).thenReturn(3);</span>
+<span class="fc" id="L177">		when(view.collectValidBet(1,3)).thenReturn(true);</span>
+<span class="fc" id="L178">		when(view.getBet()).thenReturn(2);</span>
+<span class="fc" id="L179">		when(slotMachine.spin(2)).thenReturn(2);</span>
+<span class="fc" id="L180">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L181">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L182">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L183">		inputCollection.add(&quot;010&quot;);	</span>
+<span class="fc" id="L184">		when(slotMachine.getSymbols()).thenReturn(inputCollection);</span>
+<span class="fc" id="L185">		sut.play(slotMachine, view);		</span>
+<span class="fc" id="L186">		verify(view).displayWinMessage(2);</span>
+<span class="fc" id="L187">	}</span>
+	
+	@Test
+	public void shouldDisplayLoseMessage() throws IOException, InterruptedException {
+<span class="fc" id="L191">		when(slotMachine.isGameOver()).thenReturn(false,true);</span>
+<span class="fc" id="L192">		when(view.wantsToQuit()).thenReturn(false);</span>
+<span class="fc" id="L193">		when(slotMachine.getCredit()).thenReturn(10);</span>
+<span class="fc" id="L194">		when(view.collectValidCommand()).thenReturn(true);</span>
+<span class="fc" id="L195">		when(slotMachine.getMinBet()).thenReturn(1);</span>
+<span class="fc" id="L196">		when(slotMachine.getMaxBet()).thenReturn(3);</span>
+<span class="fc" id="L197">		when(view.collectValidBet(1,3)).thenReturn(true);</span>
+<span class="fc" id="L198">		when(view.getBet()).thenReturn(2);</span>
+<span class="fc" id="L199">		when(slotMachine.spin(2)).thenReturn(0);</span>
+<span class="fc" id="L200">		Collection&lt;String&gt; inputCollection = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L201">		inputCollection.add(&quot;000&quot;);</span>
+<span class="fc" id="L202">		inputCollection.add(&quot;010&quot;);</span>
+<span class="fc" id="L203">		inputCollection.add(&quot;010&quot;);	</span>
+<span class="fc" id="L204">		when(slotMachine.getSymbols()).thenReturn(inputCollection);</span>
+<span class="fc" id="L205">		sut.play(slotMachine, view);		</span>
+<span class="fc" id="L206">		verify(view).displayLoseMessage();</span>
+<span class="fc" id="L207">	}</span>
+	
+	
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>Merged (2017-nov-19 14:32:17)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>tests (1) (2017-nov-26 19:36:14)</div></body></html>

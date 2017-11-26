@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>SymbolsTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">tests (1) (2017-nov-26 19:36:14)</a> &gt; <a href="../../index.html" class="el_group">2DV610__2</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">tests</a> &gt; <span class="el_source">SymbolsTest.java</span></div><h1>SymbolsTest.java</h1><pre class="source lang-java linenums">package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import model.Symbols;
+
+<span class="fc" id="L11">public class SymbolsTest {</span>
+
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L15">	}</span>
+
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L19">	}</span>
+	
+	@Test
+	public void shouldReturnString000() {
+<span class="fc" id="L23">		assertEquals(&quot;000&quot;, Symbols.SYMBOL_1.toString());</span>
+<span class="fc" id="L24">	}</span>
+
+	@Test
+	public void shouldReturnStringBAR() {
+<span class="fc" id="L28">		assertEquals(&quot;BAR&quot;, Symbols.SYMBOL_10.toString());</span>
+<span class="fc" id="L29">	}</span>
+	
+	@Test
+	public void shouldReturnWinTimesBet1() {
+<span class="fc" id="L33">		assertEquals(1, Symbols.SYMBOL_1.getWinTimesBet());</span>
+<span class="fc" id="L34">	}</span>
+	
+	@Test
+	public void shouldReturnWinTimesBet5() {
+<span class="fc" id="L38">		assertEquals(5, Symbols.SYMBOL_6.getWinTimesBet());</span>
+<span class="fc" id="L39">	}</span>
+	
+	@Test
+	public void shouldReturnWinTimesBet10() {
+<span class="fc" id="L43">		assertEquals(10, Symbols.SYMBOL_9.getWinTimesBet());</span>
+<span class="fc" id="L44">	}</span>
+
+	@Test
+	public void shouldReturnWinTimesBet100() {
+<span class="fc" id="L48">		assertEquals(100, Symbols.SYMBOL_10.getWinTimesBet());</span>
+<span class="fc" id="L49">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>tests (1) (2017-nov-26 19:36:14)</div></body></html>
