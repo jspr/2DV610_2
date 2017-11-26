@@ -13,6 +13,8 @@ public class EnglishView implements IView{
 	private BufferedReader bufferedReader;
 	private TimeUnit timeUnit;
 	private boolean quit = false;
+	private int bet = -1;
+	
 	
 	private final String WELCOME_MESSAGE = "Welcome to try your luck on the Slot Machine!";
 	private final String INSTRUCTIONS = "Enter '%s' to spin or '%s' to quit: ";
@@ -201,6 +203,8 @@ public class EnglishView implements IView{
 			int bet = Integer.parseInt(input);
 			if(bet < min || bet > max)
 				returnValue = false;
+			else
+				this.bet = bet;
 		} catch (NumberFormatException e) {
 			returnValue = false;
 		}
@@ -209,8 +213,7 @@ public class EnglishView implements IView{
 
 	@Override
 	public int getBet() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bet;
 	}
 
 
