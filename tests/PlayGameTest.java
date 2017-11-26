@@ -93,5 +93,19 @@ public class PlayGameTest {
 		verify(view, times(4)).collectValidBet(1,3);
 	}
 	
+	@Test
+	public void shouldCallSpinOnSlotMachine() throws IOException {
+		when(slotMachine.isGameOver()).thenReturn(false,true);
+		when(view.wantsToQuit()).thenReturn(false);
+		when(slotMachine.getCredit()).thenReturn(10);
+		when(view.collectValidCommand()).thenReturn(true);
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
+		when(view.collectValidBet(1,3)).thenReturn(true);
+		when(view.getBet()).thenReturn(2);
+		sut.play(slotMachine, view);		
+		verify(slotMachine.spin(2));
+	}
+	
 	
 }
