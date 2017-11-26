@@ -194,9 +194,17 @@ public class EnglishView implements IView{
 	}
 
 	@Override
-	public boolean CollectValidBet(int min, int max) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean CollectValidBet(int min, int max) throws IOException {
+		boolean returnValue = true;
+		String input = bufferedReader.readLine().trim();	
+		try {
+			int bet = Integer.parseInt(input);
+			if(bet < min || bet > max)
+				returnValue = false;
+		} catch (NumberFormatException e) {
+			returnValue = false;
+		}
+		return returnValue;
 	}
 
 
