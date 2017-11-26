@@ -3,6 +3,8 @@ package tests;
 import static org.mockito.Mockito.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.junit.After;
 import org.junit.Before;
@@ -108,6 +110,26 @@ public class PlayGameTest {
 		when(view.getBet()).thenReturn(2);
 		sut.play(slotMachine, view);		
 		verify(slotMachine).spin(2);
+	}
+	
+	@Test
+	public void shouldDisplayReelMessage() throws IOException, InterruptedException {
+		when(slotMachine.isGameOver()).thenReturn(false,true);
+		when(view.wantsToQuit()).thenReturn(false);
+		when(slotMachine.getCredit()).thenReturn(10);
+		when(view.collectValidCommand()).thenReturn(true);
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
+		when(view.collectValidBet(1,3)).thenReturn(true);
+		when(view.getBet()).thenReturn(2);
+		when(slotMachine.spin(2)).thenReturn(2);
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("010");
+		inputCollection.add("010");
+		inputCollection.add("010");	
+		when(slotMachine.getSymbols()).thenReturn(inputCollection);
+		sut.play(slotMachine, view);		
+		verify(view).displayReelMessage(inputCollection);
 	}
 	
 	
