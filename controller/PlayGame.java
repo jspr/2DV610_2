@@ -17,6 +17,7 @@ public class PlayGame {
 			do {
 				view.displayBettingMessage(slotMachine.getMinBet(),slotMachine.getMaxBet());
 			}while(!view.collectValidBet(slotMachine.getMinBet(),slotMachine.getMaxBet()));
+			slotMachine.spin(view.getBet());
 		}
 		if(slotMachine.isGameOver())
 			view.displayGameOverMessage();
