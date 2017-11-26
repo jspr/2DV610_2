@@ -193,5 +193,11 @@ public class EnglishView implements IView{
 		return LOSE_MESSAGE;
 	}
 
+	@Override
+	public boolean CollectValidBet(int min, int max) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 }

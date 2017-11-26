@@ -208,7 +208,36 @@ public class IViewTest {
 		verify(printStream).println(sut.getLoseMessage());
 	}
 	
-
+	
+	@Test
+	public void shouldReturnFalseCollectValidBetOnInputX() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("X");
+		assertFalse(sut.CollectValidBet(1,3));
+	}
+	
+	@Test
+	public void shouldReturnFalseCollectValidBetOnInput0() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("0");
+		assertFalse(sut.CollectValidBet(1,3));
+	}
+	
+	@Test
+	public void shouldReturnFalseCollectValidBetOnInput10() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("10");
+		assertFalse(sut.CollectValidBet(1,3));
+	}
+	
+	@Test
+	public void shouldReturnTrueCollectValidBetOnInput1() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("1");
+		assertTrue(sut.CollectValidBet(1,3));
+	}
+	
+	@Test
+	public void shouldReturnTrueCollectValidBetOnInput3() throws IOException {
+		when(bufferedReader.readLine()).thenReturn("3");
+		assertTrue(sut.CollectValidBet(1,3));
+	}
 
 
 }
