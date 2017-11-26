@@ -166,5 +166,45 @@ public class PlayGameTest {
 		verify(view).displayReelMessage(inputCollection);
 	}
 	
+	@Test
+	public void shouldDisplayWinMessage() throws IOException, InterruptedException {
+		when(slotMachine.isGameOver()).thenReturn(false,true);
+		when(view.wantsToQuit()).thenReturn(false);
+		when(slotMachine.getCredit()).thenReturn(10);
+		when(view.collectValidCommand()).thenReturn(true);
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
+		when(view.collectValidBet(1,3)).thenReturn(true);
+		when(view.getBet()).thenReturn(2);
+		when(slotMachine.spin(2)).thenReturn(2);
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("010");
+		inputCollection.add("010");
+		inputCollection.add("010");	
+		when(slotMachine.getSymbols()).thenReturn(inputCollection);
+		sut.play(slotMachine, view);		
+		verify(view).displayWinMessage(2);
+	}
+	
+	@Test
+	public void shouldDisplayLoseMessage() throws IOException, InterruptedException {
+		when(slotMachine.isGameOver()).thenReturn(false,true);
+		when(view.wantsToQuit()).thenReturn(false);
+		when(slotMachine.getCredit()).thenReturn(10);
+		when(view.collectValidCommand()).thenReturn(true);
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
+		when(view.collectValidBet(1,3)).thenReturn(true);
+		when(view.getBet()).thenReturn(2);
+		when(slotMachine.spin(2)).thenReturn(0);
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("000");
+		inputCollection.add("010");
+		inputCollection.add("010");	
+		when(slotMachine.getSymbols()).thenReturn(inputCollection);
+		sut.play(slotMachine, view);		
+		verify(view).displayLoseMessage();
+	}
+	
 	
 }
