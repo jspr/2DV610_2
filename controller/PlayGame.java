@@ -18,8 +18,12 @@ public class PlayGame {
 				do {
 					view.displayBettingMessage(slotMachine.getMinBet(),slotMachine.getMaxBet());
 				}while(!view.collectValidBet(slotMachine.getMinBet(),slotMachine.getMaxBet()));
-				slotMachine.spin(view.getBet());
+				int winnings = slotMachine.spin(view.getBet());
 				view.displayReelMessage(slotMachine.getSymbols());
+				if(winnings > 0)
+					view.displayWinMessage(winnings);
+				else
+					view.displayLoseMessage();
 			}
 		}
 		if(slotMachine.isGameOver())
