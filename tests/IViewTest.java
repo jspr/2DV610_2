@@ -42,9 +42,8 @@ public class IViewTest {
     public static Collection<Object[]> data() {
     	
     	Object col[][] = new Object[][] {
-    		new Object[]{new EnglishView(printStream, bufferedReader, timeUnit),
-    				new SwedishView(printStream, bufferedReader, timeUnit)}
-
+    		new Object[]{new EnglishView(printStream, bufferedReader, timeUnit)},
+    		new Object[]{new SwedishView(printStream, bufferedReader, timeUnit)}
     	};
     	
     	return Arrays.asList(col);
@@ -185,7 +184,7 @@ public class IViewTest {
 		Collection<String> returnedCollection = sut.getReelMessages(inputCollection);
 		sut.displayReelMessage(inputCollection);
 		for(String string : returnedCollection) {
-			verify(printStream, times(2)).println(string);
+			verify(printStream, atLeast(2)).println(string);
 		}
 	}
 	
@@ -196,7 +195,7 @@ public class IViewTest {
 		inputCollection.add("FOO");
 		inputCollection.add("001");	
 		sut.displayReelMessage(inputCollection);
-		verify(timeUnit, times(4)).sleep(1);
+		verify(timeUnit, atLeast(4)).sleep(1);
 	}
 	
 	@Test
