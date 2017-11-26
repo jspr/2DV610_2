@@ -2,6 +2,8 @@ package tests;
 
 import static org.mockito.Mockito.*;
 
+import java.io.IOException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,6 +61,16 @@ public class PlayGameTest {
 		verify(view).displayWelcomeMessage();
 		verify(view, never()).displayCredit(10);
 		verify(view).displayQuitMessage();
+	}
+	
+	@Test
+	public void shouldDisplayInstructionsAgainWhenInvalidCommand() throws IOException {
+		when(slotMachine.isGameOver()).thenReturn(true);
+		when(view.wantsToQuit()).thenReturn(false);
+		when(slotMachine.getCredit()).thenReturn(10);
+		when(view.collectValidCommand()).thenReturn(false,false,false,true);
+		sut.play(slotMachine, view);		
+		verify(view, times(4)).displayInstructions();
 	}
 	
 	
