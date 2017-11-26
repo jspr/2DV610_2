@@ -7,7 +7,7 @@ import view.IView;
 
 public class PlayGame {
 	
-	public void play(SlotMachine slotMachine, IView view) throws IOException {
+	public void play(SlotMachine slotMachine, IView view) throws IOException, InterruptedException {
 		view.displayWelcomeMessage();
 		while(!slotMachine.isGameOver() && !view.wantsToQuit()) { //game loop
 			view.displayCredit(slotMachine.getCredit());
@@ -18,6 +18,7 @@ public class PlayGame {
 				view.displayBettingMessage(slotMachine.getMinBet(),slotMachine.getMaxBet());
 			}while(!view.collectValidBet(slotMachine.getMinBet(),slotMachine.getMaxBet()));
 			slotMachine.spin(view.getBet());
+			view.displayReelMessage(slotMachine.getSymbols());
 		}
 		if(slotMachine.isGameOver())
 			view.displayGameOverMessage();

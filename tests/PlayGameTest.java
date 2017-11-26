@@ -34,7 +34,7 @@ public class PlayGameTest {
 
 	
 	@Test
-	public void shouldDisplayWelcomeMessageAndCredit_IfGameOverAndWantsToQitIsFalse() throws IOException {
+	public void shouldDisplayWelcomeMessageAndCredit_IfGameOverAndWantsToQitIsFalse() throws IOException, InterruptedException {
 		when(slotMachine.isGameOver()).thenReturn(false,true); //otherwise we'll get stuck in a loop ad infinitum
 		when(view.wantsToQuit()).thenReturn(false,true);
 		when(slotMachine.getCredit()).thenReturn(10);
@@ -43,13 +43,18 @@ public class PlayGameTest {
 		when(slotMachine.getMaxBet()).thenReturn(3);
 		when(view.collectValidBet(1,3)).thenReturn(true);
 		when(view.getBet()).thenReturn(2);
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("010");
+		inputCollection.add("010");
+		inputCollection.add("010");	
+		when(slotMachine.getSymbols()).thenReturn(inputCollection);
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
 		verify(view).displayCredit(10);
 	}
 	
 	@Test
-	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayGameOverMessage_IfGameOverIsTrue() throws IOException {
+	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayGameOverMessage_IfGameOverIsTrue() throws IOException, InterruptedException {
 		when(slotMachine.isGameOver()).thenReturn(true);
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
@@ -60,7 +65,7 @@ public class PlayGameTest {
 	}
 	
 	@Test
-	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayQuitMessage_IfWantsToQuitIsTrue() throws IOException {
+	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayQuitMessage_IfWantsToQuitIsTrue() throws IOException, InterruptedException {
 		when(slotMachine.isGameOver()).thenReturn(false);
 		when(view.wantsToQuit()).thenReturn(true);
 		when(slotMachine.getCredit()).thenReturn(10);
@@ -71,7 +76,7 @@ public class PlayGameTest {
 	}
 	
 	@Test
-	public void shouldDisplayInstructionsAgainWhenInvalidCommand() throws IOException {
+	public void shouldDisplayInstructionsAgainWhenInvalidCommand() throws IOException, InterruptedException {
 		when(slotMachine.isGameOver()).thenReturn(false,true);
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
@@ -80,12 +85,17 @@ public class PlayGameTest {
 		when(slotMachine.getMaxBet()).thenReturn(3);
 		when(view.collectValidBet(1,3)).thenReturn(true);
 		when(view.getBet()).thenReturn(2);
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("010");
+		inputCollection.add("010");
+		inputCollection.add("010");	
+		when(slotMachine.getSymbols()).thenReturn(inputCollection);
 		sut.play(slotMachine, view);		
 		verify(view, times(4)).displayInstructions();
 	}
 	
 	@Test
-	public void shouldDisplayBettingMessageAgainWhenInvalidCommand() throws IOException {
+	public void shouldDisplayBettingMessageAgainWhenInvalidCommand() throws IOException, InterruptedException {
 		when(slotMachine.isGameOver()).thenReturn(false,true);
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
@@ -94,12 +104,17 @@ public class PlayGameTest {
 		when(slotMachine.getMaxBet()).thenReturn(3);
 		when(view.collectValidBet(1,3)).thenReturn(false,false,false,true);
 		when(view.getBet()).thenReturn(2);
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("010");
+		inputCollection.add("010");
+		inputCollection.add("010");	
+		when(slotMachine.getSymbols()).thenReturn(inputCollection);
 		sut.play(slotMachine, view);		
 		verify(view, times(4)).collectValidBet(1,3);
 	}
 	
 	@Test
-	public void shouldCallSpinOnSlotMachine() throws IOException {
+	public void shouldCallSpinOnSlotMachine() throws IOException, InterruptedException {
 		when(slotMachine.isGameOver()).thenReturn(false,true);
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
@@ -108,6 +123,11 @@ public class PlayGameTest {
 		when(slotMachine.getMaxBet()).thenReturn(3);
 		when(view.collectValidBet(1,3)).thenReturn(true);
 		when(view.getBet()).thenReturn(2);
+		Collection<String> inputCollection = new ArrayList<String>();
+		inputCollection.add("010");
+		inputCollection.add("010");
+		inputCollection.add("010");	
+		when(slotMachine.getSymbols()).thenReturn(inputCollection);
 		sut.play(slotMachine, view);		
 		verify(slotMachine).spin(2);
 	}

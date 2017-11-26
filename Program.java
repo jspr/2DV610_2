@@ -29,6 +29,9 @@ public class Program {
 		} catch (IOException e) {
 			System.out.println("An IOException has been thrown:");
 			e.printStackTrace();
+		}catch (InterruptedException e) {
+			System.out.println("An InterruptedException has been thrown:");
+			e.printStackTrace();
 		}
 	}
 
