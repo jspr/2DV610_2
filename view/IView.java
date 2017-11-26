@@ -27,5 +27,6 @@ public interface IView
   void displayLoseMessage();
   String getWinMessage();
   String getLoseMessage();
-  boolean CollectValidBet(int min, int max) throws IOException;
+  boolean collectValidBet(int min, int max) throws IOException;
+  int getBet();
 }

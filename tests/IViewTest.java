@@ -212,32 +212,48 @@ public class IViewTest {
 	@Test
 	public void shouldReturnFalseCollectValidBetOnInputX() throws IOException {
 		when(bufferedReader.readLine()).thenReturn("X");
-		assertFalse(sut.CollectValidBet(1,3));
+		assertFalse(sut.collectValidBet(1,3));
 	}
 	
 	@Test
 	public void shouldReturnFalseCollectValidBetOnInput0() throws IOException {
 		when(bufferedReader.readLine()).thenReturn("0");
-		assertFalse(sut.CollectValidBet(1,3));
+		assertFalse(sut.collectValidBet(1,3));
 	}
 	
 	@Test
 	public void shouldReturnFalseCollectValidBetOnInput10() throws IOException {
 		when(bufferedReader.readLine()).thenReturn("10");
-		assertFalse(sut.CollectValidBet(1,3));
+		assertFalse(sut.collectValidBet(1,3));
 	}
 	
 	@Test
 	public void shouldReturnTrueCollectValidBetOnInput1() throws IOException {
 		when(bufferedReader.readLine()).thenReturn("1");
-		assertTrue(sut.CollectValidBet(1,3));
+		assertTrue(sut.collectValidBet(1,3));
 	}
 	
 	@Test
 	public void shouldReturnTrueCollectValidBetOnInput3() throws IOException {
 		when(bufferedReader.readLine()).thenReturn("3");
-		assertTrue(sut.CollectValidBet(1,3));
+		assertTrue(sut.collectValidBet(1,3));
 	}
 
+	@Test
+	public void shouldReturnGetBet1() throws IOException {
+		int expected = 1;
+		when(bufferedReader.readLine()).thenReturn("1");
+		sut.collectValidBet(1,3);
+		assertEquals(expected,sut.getBet());
+	}
+	
+	@Test
+	public void shouldReturnGetBet3() throws IOException {
+		int expected = 3;
+		when(bufferedReader.readLine()).thenReturn("3");
+		sut.collectValidBet(1,3);
+		assertEquals(expected,sut.getBet());
+	}
+	
 
 }

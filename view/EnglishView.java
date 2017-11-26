@@ -194,7 +194,7 @@ public class EnglishView implements IView{
 	}
 
 	@Override
-	public boolean CollectValidBet(int min, int max) throws IOException {
+	public boolean collectValidBet(int min, int max) throws IOException {
 		boolean returnValue = true;
 		String input = bufferedReader.readLine().trim();	
 		try {
@@ -205,6 +205,12 @@ public class EnglishView implements IView{
 			returnValue = false;
 		}
 		return returnValue;
+	}
+
+	@Override
+	public int getBet() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 
