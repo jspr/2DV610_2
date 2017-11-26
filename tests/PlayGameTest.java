@@ -37,6 +37,9 @@ public class PlayGameTest {
 		when(view.wantsToQuit()).thenReturn(false,true);
 		when(slotMachine.getCredit()).thenReturn(10);
 		when(view.collectValidCommand()).thenReturn(true);
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
+		when(view.collectValidBet(1,3)).thenReturn(true);
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
 		verify(view).displayCredit(10);
@@ -70,6 +73,9 @@ public class PlayGameTest {
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
 		when(view.collectValidCommand()).thenReturn(false,false,false,true);
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
+		when(view.collectValidBet(1,3)).thenReturn(true);
 		sut.play(slotMachine, view);		
 		verify(view, times(4)).displayInstructions();
 	}
@@ -80,6 +86,8 @@ public class PlayGameTest {
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
 		when(view.collectValidCommand()).thenReturn(true);
+		when(slotMachine.getMinBet()).thenReturn(1);
+		when(slotMachine.getMaxBet()).thenReturn(3);
 		when(view.collectValidBet(1,3)).thenReturn(false,false,false,true);
 		sut.play(slotMachine, view);		
 		verify(view, times(4)).collectValidBet(1,3);

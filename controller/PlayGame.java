@@ -14,6 +14,9 @@ public class PlayGame {
 			do {
 				view.displayInstructions();
 			}while(!view.collectValidCommand());
+			do {
+				view.displayBettingMessage(slotMachine.getMinBet(),slotMachine.getMaxBet());
+			}while(!view.collectValidBet(slotMachine.getMinBet(),slotMachine.getMaxBet()));
 		}
 		if(slotMachine.isGameOver())
 			view.displayGameOverMessage();
