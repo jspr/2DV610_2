@@ -32,17 +32,18 @@ public class PlayGameTest {
 
 	
 	@Test
-	public void shouldDisplayWelcomeMessageAndCredit_IfGameOverAndWantsToQitIsFalse() {
+	public void shouldDisplayWelcomeMessageAndCredit_IfGameOverAndWantsToQitIsFalse() throws IOException {
 		when(slotMachine.isGameOver()).thenReturn(false,true); //otherwise we'll get stuck in a loop ad infinitum
 		when(view.wantsToQuit()).thenReturn(false,true);
 		when(slotMachine.getCredit()).thenReturn(10);
+		when(view.collectValidCommand()).thenReturn(true);
 		sut.play(slotMachine, view);
 		verify(view).displayWelcomeMessage();
 		verify(view).displayCredit(10);
 	}
 	
 	@Test
-	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayGameOverMessage_IfGameOverIsTrue() {
+	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayGameOverMessage_IfGameOverIsTrue() throws IOException {
 		when(slotMachine.isGameOver()).thenReturn(true);
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
@@ -53,7 +54,7 @@ public class PlayGameTest {
 	}
 	
 	@Test
-	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayQuitMessage_IfWantsToQuitIsTrue() {
+	public void shouldDisplayWelcomeMessage_ShouldNotDisplayCredit_ShouldDisplayQuitMessage_IfWantsToQuitIsTrue() throws IOException {
 		when(slotMachine.isGameOver()).thenReturn(false);
 		when(view.wantsToQuit()).thenReturn(true);
 		when(slotMachine.getCredit()).thenReturn(10);
@@ -65,7 +66,7 @@ public class PlayGameTest {
 	
 	@Test
 	public void shouldDisplayInstructionsAgainWhenInvalidCommand() throws IOException {
-		when(slotMachine.isGameOver()).thenReturn(true);
+		when(slotMachine.isGameOver()).thenReturn(false,true);
 		when(view.wantsToQuit()).thenReturn(false);
 		when(slotMachine.getCredit()).thenReturn(10);
 		when(view.collectValidCommand()).thenReturn(false,false,false,true);
