@@ -74,5 +74,16 @@ public class PlayGameTest {
 		verify(view, times(4)).displayInstructions();
 	}
 	
+	@Test
+	public void shouldDisplayBettingMessageAgainWhenInvalidCommand() throws IOException {
+		when(slotMachine.isGameOver()).thenReturn(false,true);
+		when(view.wantsToQuit()).thenReturn(false);
+		when(slotMachine.getCredit()).thenReturn(10);
+		when(view.collectValidCommand()).thenReturn(true);
+		when(view.collectValidBet(1,3)).thenReturn(false,false,false,true);
+		sut.play(slotMachine, view);		
+		verify(view, times(4)).collectValidBet(1,3);
+	}
+	
 	
 }
