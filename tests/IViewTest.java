@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 
 import view.EnglishView;
 import view.IView;
+import view.SwedishView;
 
 @RunWith(Parameterized.class)
 public class IViewTest {
@@ -41,7 +42,9 @@ public class IViewTest {
     public static Collection<Object[]> data() {
     	
     	Object col[][] = new Object[][] {
-    		new Object[]{new EnglishView(printStream, bufferedReader, timeUnit)}
+    		new Object[]{new EnglishView(printStream, bufferedReader, timeUnit),
+    				new SwedishView(printStream, bufferedReader, timeUnit)}
+
     	};
     	
     	return Arrays.asList(col);
