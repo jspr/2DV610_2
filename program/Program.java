@@ -15,6 +15,11 @@ import view.EnglishView;
 import view.IView;
 
 public class Program {
+	
+	private static Collection<Reel> reels = new ArrayList<Reel>();;
+	private static SlotMachine slotMachine = setUpSlotMachine(setUpReels(reels));
+	private static IView view = setUpView();
+	private static PlayGame playGame = setUpPlayGame();
 
 	public static void main(String[] args) {
 		
@@ -40,6 +45,17 @@ public class Program {
         return reels;
     }
 	
+	public static void setPlayGame(PlayGame playGame) {
+        Program.playGame = playGame;
+    }
+	
+	public static void setSlotMachine(SlotMachine slotMachine) {
+        Program.slotMachine = slotMachine;
+    }
+	
+	public static void setView(IView view) {
+        Program.view = view;
+    }
 	
 
 }

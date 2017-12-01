@@ -1,8 +1,14 @@
 package tests;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.doNothing;
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,6 +21,7 @@ import model.Reel;
 import model.SlotMachine;
 import program.Program;
 import view.EnglishView;
+import view.IView;
 
 public class ProgramTest {
 
@@ -47,6 +54,19 @@ public class ProgramTest {
 		Collection<Reel> reels = new ArrayList<Reel>();
 		reels = Program.setUpReels(reels);
 		assertEquals(expected,reels.size());
+	}
+	
+	@Test
+	public void shouldCallPlayOnPlayGame() throws IOException, InterruptedException {
+		PlayGame playGame = mock(PlayGame.class);
+		IView view = mock(EnglishView.class);
+		SlotMachine slotMachine = mock(SlotMachine.class);
+		doNothing().when(playGame).play(slotMachine, view); //maybe not really needed
+		Program.setView(view);
+		Program.setPlayGame(playGame);
+		Program.setSlotMachine(slotMachine);
+		Program.main(new String[0]);
+		verify(playGame).play(slotMachine, view);
 	}
 
 }
