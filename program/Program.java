@@ -24,4 +24,11 @@ public class Program {
 		return new SlotMachine(1,3,10,reels);
 	}
 
+	public static Object setUpPlayGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
 }

@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import controller.PlayGame;
 import model.Reel;
 import model.SlotMachine;
 import program.Program;
@@ -26,6 +27,11 @@ public class ProgramTest {
 	@Test
 	public void shouldCreateNewSlotMachine() {
 		assertThat(Program.setUpSlotMachine(new ArrayList<Reel>()), instanceOf(SlotMachine.class));
+	}
+	
+	@Test
+	public void shouldCreateNewPlayGame() {
+		assertThat(Program.setUpPlayGame(), instanceOf(PlayGame.class));
 	}
 
 }
