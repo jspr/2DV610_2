@@ -21,8 +21,8 @@ public class Program {
 	private static IView view = setUpView();
 	private static PlayGame playGame = setUpPlayGame();
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws IOException, InterruptedException {
+		playGame.play(slotMachine, view);
 	}
 
 	public static SlotMachine setUpSlotMachine(Collection<Reel> reels) {
