@@ -33,9 +33,12 @@ public class Program {
 	}
 
 	public static Collection<Reel> setUpReels(Collection<Reel> reels) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        for(int i=0; i<3; i++) {
+			Random random = new SecureRandom();
+			reels.add(new Reel(random));
+		}
+        return reels;
+    }
 	
 	
 
