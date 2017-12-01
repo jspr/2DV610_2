@@ -23,11 +23,13 @@ public class Program {
 	private static PlayGame playGame = setUpPlayGame();
 	private static PrintStream printStream = System.out;
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args){
 		try {
 			playGame.play(slotMachine, view);
 		} catch (IOException e) {
 			printStream.println("An IOException has been thrown.");
+		}catch (InterruptedException e) {
+			printStream.println("An InterruptedException has been thrown.");
 		}
 	}
 
