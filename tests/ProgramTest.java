@@ -87,6 +87,21 @@ public class ProgramTest {
 	}
 	
 	@Test
+	public void shouldPrintMessageOnInterruptedException() throws IOException, InterruptedException {
+		PlayGame playGame = mock(PlayGame.class);
+		IView view = mock(EnglishView.class);
+		SlotMachine slotMachine = mock(SlotMachine.class);
+		PrintStream printStream = mock(PrintStream.class);
+		doThrow(new InterruptedException()).when(playGame).play(slotMachine, view);
+		Program.setView(view);
+		Program.setPlayGame(playGame);
+		Program.setSlotMachine(slotMachine);
+		Program.setPrintStream(printStream);
+		Program.main(new String[0]);
+		verify(printStream).println("An InterruptedException has been thrown.");
+	}
+	
+	@Test
 	public void shouldCreateProgram() {
 		Program sut = new Program();
 		assertThat(sut, instanceOf(Program.class));
