@@ -28,9 +28,8 @@ public class Program {
 		return new PlayGame();
 	}
 
-	public static Object setUpView() {
-		// TODO Auto-generated method stub
-		return null;
+	public static IView setUpView() {
+		return new EnglishView(System.out, new BufferedReader(new InputStreamReader(System.in)), TimeUnit.SECONDS);
 	}
 	
 	
