@@ -21,9 +21,14 @@ public class Program {
 	private static SlotMachine slotMachine = setUpSlotMachine(setUpReels(reels));
 	private static IView view = setUpView();
 	private static PlayGame playGame = setUpPlayGame();
+	private static PrintStream printStream = System.out;
 
-	public static void main(String[] args) throws IOException, InterruptedException {
-		playGame.play(slotMachine, view);
+	public static void main(String[] args) throws InterruptedException {
+		try {
+			playGame.play(slotMachine, view);
+		} catch (IOException e) {
+			printStream.println("An IOException has been thrown.");
+		}
 	}
 
 	public static SlotMachine setUpSlotMachine(Collection<Reel> reels) {
@@ -57,11 +62,10 @@ public class Program {
 	public static void setView(IView view) {
         Program.view = view;
     }
-
+	
 	public static void setPrintStream(PrintStream printStream) {
-		// TODO Auto-generated method stub
-		
-	}
+        Program.printStream = printStream;
+    }
 	
 
 }
