@@ -17,23 +17,12 @@ import view.IView;
 public class Program {
 
 	public static void main(String[] args) {
-		Collection<Reel> reels = new ArrayList<Reel>();
-		for(int i=0; i<3; i++) {
-			Random random = new SecureRandom();
-			reels.add(new Reel(random));
-		}
-		SlotMachine slotMachine = new SlotMachine(1,3,10,reels);
-		IView view = new EnglishView(System.out, new BufferedReader(new InputStreamReader(System.in)), TimeUnit.SECONDS);
-		PlayGame playGame = new PlayGame();
-		try {
-			playGame.play(slotMachine, view);
-		} catch (IOException e) {
-			System.out.println("An IOException has been thrown:");
-			e.printStackTrace();
-		}catch (InterruptedException e) {
-			System.out.println("An InterruptedException has been thrown:");
-			e.printStackTrace();
-		}
+		
+	}
+
+	public static Object setUpSlotMachine(ArrayList<Reel> arrayList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
