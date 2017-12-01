@@ -47,5 +47,17 @@ public class SymbolsTest {
 	public void shouldReturnWinTimesBet100() {
 		assertEquals(100, Symbols.SYMBOL_10.getWinTimesBet());
 	}
+	
+	@Test
+	public void shouldReturnValueOfString000() {
+		assertEquals(Symbols.SYMBOL_1, Symbols.valueOf("SYMBOL_1"));
+	}
+	
+	@Test
+	public void shouldReturnValueOfStringBAR() {
+		assertEquals(Symbols.SYMBOL_10, Symbols.valueOf("SYMBOL_10"));
+	}
+	
+
 
 }

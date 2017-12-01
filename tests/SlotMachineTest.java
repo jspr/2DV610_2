@@ -107,18 +107,32 @@ public class SlotMachineTest {
 	
 	@Test
 	public void shouldThrowRuntimeExceptionWhenBetIsBiggerThanMaxBet() {
-		try {
-			sut.spin(1000);
-	        fail();
-	    } catch(RuntimeException e) { }
+		assertTrue(catchExceptionOnSpin(new RuntimeException(), 1000));
 	}
 	
 	@Test
 	public void shouldThrowRuntimeExceptionWhenBetIsSmallerThan1() {
+		assertTrue(catchExceptionOnSpin(new RuntimeException(), -1));
+	}
+	
+	@Test
+	public void shouldNotThrowIndexOutOfBoundsExceptionWhenBetIsSmallerThan1() {
+		assertFalse(catchExceptionOnSpin(new IndexOutOfBoundsException(), -1));
+	}
+	
+	@Test
+	public void shouldNotThrowExceptionWhenBetIs2() {
+		assertFalse(catchExceptionOnSpin(new RuntimeException(), 2));
+	}
+	
+	private boolean catchExceptionOnSpin(Exception exception, int bet) {
+		boolean caught = false;
 		try {
-			sut.spin(-1);
-	        fail();
-	    } catch(RuntimeException e) { }
+			sut.spin(bet);
+	    } catch(RuntimeException e) {
+	    	caught = e.getClass() == exception.getClass();
+	    }
+		return caught;
 	}
 	
 	@Test
