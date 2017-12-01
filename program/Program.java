@@ -31,6 +31,11 @@ public class Program {
 	public static IView setUpView() {
 		return new EnglishView(System.out, new BufferedReader(new InputStreamReader(System.in)), TimeUnit.SECONDS);
 	}
+
+	public static Collection<Reel> setUpReels(Collection<Reel> reels) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

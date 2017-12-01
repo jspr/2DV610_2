@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.junit.After;
 import org.junit.Before;
@@ -38,6 +39,14 @@ public class ProgramTest {
 	@Test
 	public void shouldCreateNewEnglishView() {
 		assertThat(Program.setUpView(), instanceOf(EnglishView.class));
+	}
+	
+	@Test
+	public void shouldAddReels() {
+		int expected = 3;
+		Collection<Reel> reels = new ArrayList<Reel>();
+		reels = Program.setUpReels(reels);
+		assertEquals(expected,reels.size());
 	}
 
 }
