@@ -13,6 +13,7 @@ import controller.PlayGame;
 import model.Reel;
 import model.SlotMachine;
 import program.Program;
+import view.EnglishView;
 
 public class ProgramTest {
 
@@ -32,6 +33,11 @@ public class ProgramTest {
 	@Test
 	public void shouldCreateNewPlayGame() {
 		assertThat(Program.setUpPlayGame(), instanceOf(PlayGame.class));
+	}
+	
+	@Test
+	public void shouldCreateNewEnglishView() {
+		assertThat(Program.setUpView(), instanceOf(EnglishView.class));
 	}
 
 }

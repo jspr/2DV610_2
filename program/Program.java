@@ -27,6 +27,11 @@ public class Program {
 	public static PlayGame setUpPlayGame() {
 		return new PlayGame();
 	}
+
+	public static Object setUpView() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 
