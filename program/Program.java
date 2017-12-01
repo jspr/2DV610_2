@@ -20,9 +20,8 @@ public class Program {
 		
 	}
 
-	public static Object setUpSlotMachine(ArrayList<Reel> arrayList) {
-		// TODO Auto-generated method stub
-		return null;
+	public static SlotMachine setUpSlotMachine(Collection<Reel> reels) {
+		return new SlotMachine(1,3,10,reels);
 	}
 
 }
