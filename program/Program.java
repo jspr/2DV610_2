@@ -2,6 +2,7 @@ package program;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -56,6 +57,11 @@ public class Program {
 	public static void setView(IView view) {
         Program.view = view;
     }
+
+	public static void setPrintStream(PrintStream printStream) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
